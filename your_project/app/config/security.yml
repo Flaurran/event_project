@@ -2,10 +2,7 @@
 # https://symfony.com/doc/current/security.html
 security:
     encoders:
-        AppBundle\Entity\User\User:
-            algorithm: sha512
-            encode_as_base64: false
-            iterations: 1
+        FOS\UserBundle\Model\UserInterface: bcrypt
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
