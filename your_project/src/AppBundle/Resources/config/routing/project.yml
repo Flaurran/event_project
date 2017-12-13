@@ -1,0 +1,11 @@
+project_index:
+  path: /
+  defaults: { _controller: 'AppBundle:Project:index' }
+
+project_create:
+  path: /create
+  defaults: { _controller: 'AppBundle:Project:create' }
+
+project_edit:
+  path: /edit/{id}
+  defaults: { _controller: 'AppBundle:Project:edit' }
