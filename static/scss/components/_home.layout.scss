@@ -1,0 +1,31 @@
+.home {}
+
+.home__wrapper {
+  @include flex-grid-row;
+  @include flex-align(center, stretch);
+  height: 100%;
+}
+
+.home__start {
+  @include flex-grid-column;
+  @include flex;
+  @include flex-direction(column);
+  @include flex-align(center, middle);
+
+  p {
+    width: 50%;
+  }
+}
+
+.home__project {
+
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  @include flex;
+  @include flex-direction(column);
+}

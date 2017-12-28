@@ -1,0 +1,22 @@
+.header {}
+
+.header__menu {
+  @include flex-grid-row;
+}
+
+.header__logo {
+  @include flex-grid-column(1 of 3);
+}
+
+.header__social {
+  @include flex-grid-column(1 of 3);
+  @include flex;
+  @include flex-align(right);
+
+}
+
+.header__connexion {
+  @include flex-grid-column(1 of 3);
+  @include flex;
+  @include flex-align(center);
+}

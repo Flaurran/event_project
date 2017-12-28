@@ -1,0 +1,64 @@
+/**
+ * Create a link hover with the good colors
+ * @param $text-deco:     text-decoration:  none
+ * @param $color:         color:            $celery
+ * @param $text-deco-hov: text-decoration:  underline
+ * @param $color-hov:     color:            $lima
+ */
+@mixin link-hover(
+    $text-deco: none,
+    $color: $celery,
+    $text-deco-hov: underline,
+    $color-hov: $lima,
+    $color-visited: $celery) {
+
+    text-decoration: $text-deco;
+    color: $color;
+
+    &:hover {
+        text-decoration: $text-deco-hov;
+        color: $color-hov;
+    }
+
+    &:visited {
+        color: $color-visited;
+    }
+}
+
+/**
+ * Remove bullets and margins, paddings from lists
+ * @param $margin:      margin:              0
+ * @param $padding:     padding:             0
+ * @param $list-type:   list-style-type:     none
+ */
+@mixin update-list(
+    $margin: 0,
+    $padding: 0,
+    $list-type: none) {
+
+    margin: $margin;
+    padding: $padding;
+    list-style-type: $list-type;
+}
+
+/**
+ * Remove bullets and margins, paddings from lists
+ * @param $padding:     padding:             1rem 2rem
+ * @param $bc:          background-color:    $blue
+ * @param $b-radius:    border-radius:       5px
+ * @param $color:       color:               $purple
+ * @param $fontW:       font-weight:         bold
+ */
+@mixin button(
+    $padding: 1rem 2rem,
+    $bc: $blue,
+    $b-radius: 5px,
+    $color: white,
+    $fontW: bold) {
+
+    padding: $padding;
+    color: $color;
+    background-color: $bc;
+    border-radius: $b-radius;
+    font-weight: $fontW;
+}

@@ -1,0 +1,27 @@
+/* Colors */
+$blue: #284F6A;
+$lightblue: #62B6D6;
+$purple: #AC92A6;
+$gray: #D5C7BC;
+
+/* Fonts */
+@font-face {
+  font-family: 'Lubalin';
+  src: url('../fonts/LubalinGraph-Book.eot');
+  src: url('../fonts/LubalinGraph-Book.woff') format('woff'),
+       url('../fonts/LubalinGraph-Book.ttf')  format('truetype'),
+       url('../fonts/LubalinGraph-Book.svg#svgFontName') format('svg');
+}
+
+@font-face {
+  font-family: 'Lubalin-Demi';
+  src: url('../fonts/LubalinGraph-Demi.eot');
+  src: url('../fonts/LubalinGraph-Demi.woff') format('woff'),
+       url('../fonts/LubalinGraph-Demi.ttf')  format('truetype'),
+       url('../fonts/LubalinGraph-Demi.svg#svgFontName') format('svg');
+}
+
+$font-primary: 'Lubalin','Arial','Helvetica','sans-serif';
+$font-secondary: 'Arial','Helvetica','sans-serif';
+
+/* Global CSS */

@@ -1,0 +1,26 @@
+.home {}
+
+.home__wrapper {
+  background: linear-gradient(
+                  rgba(0, 0, 0, 0.45),
+                  rgba(0, 0, 0, 0.45)
+  ),url('../../img/trip-adventure.jpeg');
+  background-size: cover;
+  color: white;
+  text-align: center;
+}
+
+.home__start {
+  font-size: 1.2rem;
+
+  button {
+    @include button();
+  }
+}
+
+.home__project {
+
+  img {
+    height:100px;
+  }
+}

@@ -1,0 +1,17 @@
+.footer {}
+
+.footer__menu {
+  @include flex-grid-row;
+}
+
+
+.footer__copy {
+  @include flex-grid-column(1 of 3);
+}
+
+.footer__links {
+  @include flex-grid-column(2 of 3);
+  @include flex;
+  @include flex-align(right);
+
+}

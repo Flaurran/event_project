@@ -1,0 +1,19 @@
+.project {
+  @include flex;
+  @include flex-direction(row);
+}
+
+.project--home {
+  @include flex;
+  @include flex-direction(row);
+}
+
+.project__description {
+  @include flex;
+  @include flex-direction(column);
+}
+
+.project__description--home {
+  @include flex;
+  @include flex-direction(column);
+}

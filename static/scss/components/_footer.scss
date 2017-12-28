@@ -1,0 +1,14 @@
+.footer {}
+
+.footer__menu {
+  background-color: $purple;
+}
+
+.footer__copy {
+  padding: 0.5rem 0.5rem;
+}
+
+.footer__links {
+  @include update-list();
+
+}

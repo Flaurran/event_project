@@ -1,0 +1,28 @@
+.header {}
+
+.header__menu {
+  background-color: $blue;
+  color: white;
+  height: 50px;
+}
+
+.header__logo {
+  margin-top: 0.5rem;
+  position: relative;
+
+  img {
+    height: 115px;
+  }
+}
+
+.header__social {
+  @include update-list();
+
+  li:not(:last-of-type) {
+    margin-right: 1rem;
+  }
+}
+
+.header__connexion {
+
+}
