@@ -24,6 +24,10 @@
 /web/bundles/
 /web/uploads/
 
+# Bower and Node modules
+*/bower_components/
+*/node_modules/
+
 # PHPUnit
 /app/phpunit.xml
 /phpunit.xml
