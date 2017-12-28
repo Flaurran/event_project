@@ -1,0 +1,6 @@
+{% extends '@App/layout/layout.html.twig' %}
+
+{% block content %}
+    <a href="{{ path('project_manage', {'id': app.request.get('id')}) }}">Retour</a>
+    {{ form(form) }}
+{% endblock %}

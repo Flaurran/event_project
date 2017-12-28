@@ -1,14 +1,13 @@
 <?php
-
 namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\SubmitButton;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ProjectType extends AbstractType
+class ParticipantType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -16,11 +15,17 @@ class ProjectType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('date')
-            ->add('description')
+            ->add('mail', EmailType::class, [
+                'required' => true
+            ])
+            ->add('firstname', null, [
+                'required' => true
+            ])
+            ->add('lastname', null, [
+                'required' => false
+            ])
             ->add('submit', SubmitType::class, [])
-            ;
+        ;
     }
 
     /**
@@ -29,7 +34,7 @@ class ProjectType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Project',
+            'data_class' => 'AppBundle\Entity\Participant',
         ));
     }
 
@@ -38,6 +43,6 @@ class ProjectType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_project';
+        return 'appbundle_participant';
     }
 }

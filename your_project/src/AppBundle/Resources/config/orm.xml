@@ -3,9 +3,23 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="app.manager.project" class="AppBundle\Manager\ProjectManager">
+        <service id="app.manager.manager" class="AppBundle\Manager\Manager">
             <argument id="doctrine" type="service" />
             <argument id="security.token_storage" type="service" />
+        </service>
+        <service id="app.manager.user" class="AppBundle\Manager\UserManager" parent="app.manager.manager">
+            <argument>AppBundle\Entity\User</argument>
+        </service>
+        <service id="app.manager.project" class="AppBundle\Manager\ProjectManager" parent="app.manager.manager">
+            <argument>AppBundle\Entity\Project</argument>
+        </service>
+        <service id="app.manager.participant" class="AppBundle\Manager\ParticipantManager" parent="app.manager.manager">
+            <argument>AppBundle\Entity\Participant</argument>
+        </service>
+        <service id="app.manager.comment" class="AppBundle\Manager\CommentManager" parent="app.manager.manager">
+            <argument>AppBundle\Entity\Comment</argument>
+            <argument id="app.manager.user" type="service" />
+            <argument id="app.manager.participant" type="service" />
         </service>
     </services>
 </container>

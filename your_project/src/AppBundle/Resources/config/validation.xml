@@ -16,4 +16,13 @@
             <constraint name="NotBlank" />
         </property>
     </class>
+    <class name="AppBundle\Entity\Participant">
+        <property name="mail">
+            <constraint name="Email"></constraint>
+            <constraint name="NotBlank"></constraint>
+        </property>
+        <property name="firstname">
+            <constraint name="NotBlank"></constraint>
+        </property>
+    </class>
 </constraint-mapping>

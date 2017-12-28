@@ -1,0 +1,3 @@
+debug_add_role_admin:
+  path: /add-role-admin
+  defaults: { _controller: 'UserBundle:Security:addRoleAdmin' }

@@ -1,0 +1,3 @@
+comment_remove:
+  path: /remove/{id}
+  defaults: { _controller: 'Appbundle:Comment:remove' }

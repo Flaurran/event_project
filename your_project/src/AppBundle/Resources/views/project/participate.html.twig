@@ -1,0 +1,15 @@
+{% extends '@App/layout/layout.html.twig' %}
+
+{% block content %}
+    <div>Participant actuel : {{ participant.fullName }}</div>
+    {% include '@App/project/info.html.twig' %}
+    <div>Statut : {{ participant.statusLabel }}</div>
+    {% if participant.isInvite %}
+        <a href="{{ path('project_participant_accepte', {'slug': app.request.get('slug')}) }}">Accepte</a>
+        <a href="{{ path('project_participant_decline', {'slug': app.request.get('slug')}) }}">Décliné</a>
+    {% elseif participant.isAccepted %}
+        <a href="{{ path('project_participant_decline', {'slug': app.request.get('slug')}) }}">Ne plus participer</a>
+    {% elseif participant.isRefused %}
+        <a href="{{ path('project_participant_accepte', {'slug': app.request.get('slug')}) }}">Participer</a>
+    {% endif %}
+{% endblock %}

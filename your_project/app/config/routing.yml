@@ -1,6 +1,9 @@
 app:
     resource: '@AppBundle/Resources/config/routing.yml'
     prefix: /
+user_debug:
+    resource: '@UserBundle/Resources/config/routing.yml'
+    prefix: /debug
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"

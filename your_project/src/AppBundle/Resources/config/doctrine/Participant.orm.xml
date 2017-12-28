@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <!-- Titre, date, lieu, description, créateur, image background -->
+    <entity name="AppBundle\Entity\Participant" table="your_participant" repository-class="AppBundle\Repository\ParticipantRepository">
+        <unique-constraints>
+            <unique-constraint columns="mail,project_id"/>
+        </unique-constraints>
+        <id name="id" type="integer">
+            <generator strategy="AUTO"/>
+        </id>
+        <field name="mail" type="string" />
+
+        <field name="firstname" type="string" />
+        <field name="lastname" type="string" nullable="true" />
+        <field name="slug" type="string" />
+        <field name="status" type="integer" />
+        <many-to-one target-entity="AppBundle\Entity\Project" field="project"/>
+    </entity>
+</doctrine-mapping>

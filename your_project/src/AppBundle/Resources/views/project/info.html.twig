@@ -1,0 +1,68 @@
+{% if project is defined %}
+    {% set isCreator = app.user is not null and (app.user.id == project.creator.id or app.user.hasRole('ROLE_ADMIN') ) %}
+    <div>
+        [Créé le {{ project.createdAt.format('d/m/Y H:i:s') }} par {{ project.creator.username }}]
+    </div>
+    <div>
+        <h1>
+        Titre :
+        {% if isCreator %}
+            <a href="#"
+               class="x-editable"
+               data-type="text"
+               data-pk="{{ project.id }}"
+               data-name="title"
+               data-value="{{ project.title }}"
+               data-url="{{ path('project_manage_update_ajax', {'id': project.id }) }}">
+        {% endif %}
+        {{ project.title }}
+        {% if isCreator %}</a>{% endif %}
+        </h1>
+    </div>
+    <div>
+        Date :
+        {% if isCreator %}
+        <a href="#"
+           class="x-editable"
+           data-type="date"
+           data-pk="{{ project.id }}"
+           data-name="date"
+           data-value="{{ project.date|date('d/m/Y H:i:s') }}"
+           data-url="{{ path('project_manage_update_ajax', {'id': project.id }) }}">
+            {% endif %}
+            {{ project.date|date('d/m/Y H:i:s') }}
+            {% if isCreator %}</a>{% endif %}
+    </div>
+    <div>
+        Description :
+        {% if isCreator %}
+        <a href="#"
+           class="x-editable"
+           data-type="text"
+           data-pk="{{ project.description }}"
+           data-name="description"
+           data-value="{{ project.description }}"
+           data-url="{{ path('project_manage_update_ajax', {'id': project.id }) }}">
+            {% endif %}
+            {{ project.description }}
+            {% if isCreator %}</a>{% endif %}
+    </div>
+    <div>
+        [Dernière modification {{ project.updatedAt|date('d/m/Y H:i:s') }}]
+    </div>
+    <div>
+        {% include '@App/project/participant_list.html.twig' with {'participants': project.participants} %}
+        {% if isCreator %}
+            <a href="{{ path('project_add_participant', {'id': project.id}) }}">Ajouter un participant</a>
+        {% endif %}
+    </div>
+    <div>
+        {% include '@App/project/comment.html.twig' with {'comments': project.comments, 'participant': participant is defined ? participant : null} %}
+    </div>
+    <div>
+        <h2>Options</h2>
+        TODO: Moyen de locomotion, location appart / hotel / hébergement, Nourriture / boisson etc...
+    </div>
+{% else %}
+    <div class="alert alert-danger">Error on this page, contact administrator</div>
+{% endif %}

@@ -5,3 +5,7 @@ homepage:
 project:
   prefix: /project
   resource: '@AppBundle/Resources/config/routing/project.yml'
+
+comment:
+  prefix: /comment
+  resource: '@AppBundle/Resources/config/routing/comment.yml'

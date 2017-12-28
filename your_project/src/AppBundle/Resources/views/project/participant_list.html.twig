@@ -1,0 +1,11 @@
+<h2>Liste des participants</h2>
+{% if participants is defined and participants|length > 0 %}
+    <ul>
+        {# for participantStatusLabel => use picto ? #}
+        {% for participant in participants %}
+            <li>[{{ participant.statusLabel }}] {{ participant.fullName }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <div>Aucun participant</div>
+{% endif %}

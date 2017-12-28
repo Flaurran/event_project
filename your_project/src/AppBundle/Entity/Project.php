@@ -2,6 +2,8 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * Project
  */
@@ -45,12 +47,21 @@ class Project
      */
     private $creator;
 
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $participants;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $comments;
+
+
     public function __construct()
     {
-        //TODO: Remove it, when update, createdAt is updated
-        $now = new \DateTime();
-        $this->createdAt
-            = $this->updatedAt = $now;
+        $this->participants = new ArrayCollection();
     }
 
     /**
@@ -205,5 +216,88 @@ class Project
     public function getCreator()
     {
         return $this->creator;
+    }
+
+
+
+    /**
+     * Add participant
+     *
+     * @param \AppBundle\Entity\Participant $participant
+     *
+     * @return Project
+     */
+    public function addParticipant(\AppBundle\Entity\Participant $participant)
+    {
+        $this->participants[] = $participant;
+
+        return $this;
+    }
+
+    /**
+     * Remove participant
+     *
+     * @param \AppBundle\Entity\Participant $participant
+     */
+    public function removeParticipant(\AppBundle\Entity\Participant $participant)
+    {
+        $this->participants->removeElement($participant);
+    }
+
+    /**
+     * Get participant
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getParticipants()
+    {
+        return $this->participants;
+    }
+
+    /* LifeCycleEvents */
+
+    public function onPreUpdate()
+    {
+        $this->updatedAt = new \DateTime();
+    }
+
+    public function onPrePersist()
+    {
+        $this->createdAt =
+            $this->updatedAt = new \DateTime();
+    }
+
+    /**
+     * Add comment
+     *
+     * @param \AppBundle\Entity\Comment $comment
+     *
+     * @return Project
+     */
+    public function addComment(\AppBundle\Entity\Comment $comment)
+    {
+        $this->comments[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param \AppBundle\Entity\Comment $comment
+     */
+    public function removeComment(\AppBundle\Entity\Comment $comment)
+    {
+        $this->comments->removeElement($comment);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }

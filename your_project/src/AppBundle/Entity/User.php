@@ -1,8 +1,9 @@
 <?php
 namespace AppBundle\Entity;
+use AppBundle\EntityInterface\AuthorEntityInterface;
 use FOS\UserBundle\Model\User as BaseUser;
 
-class User extends BaseUser
+class User extends BaseUser implements AuthorEntityInterface
 {
     const GENDER_MALE = 0;
     const GENDER_FEMALE = 1;
@@ -52,5 +53,10 @@ class User extends BaseUser
             'Homme' => self::GENDER_MALE,
             'Femme' => self::GENDER_FEMALE
         ];
+    }
+
+    public function getAuthorName()
+    {
+        return $this->username;
     }
 }

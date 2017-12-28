@@ -1,0 +1,24 @@
+{% extends 'AppBundle:layout:layout.html.twig' %}
+
+{% block content %}
+    {% include 'AppBundle:project:info.html.twig' %}
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(document).on('ready', function() {
+            // Editable inline fields.
+            $('.x-editable').editable({
+                'mode': 'inline',
+                'success': function(response, newValue) {
+                    // Dumb workaround to trigger a page reload with fragment every time.
+                    var r = '?r=1';
+                    if (window.location.search == r) {
+                        r = '?r=0'
+                    }
+                    window.location.replace(response.url + r);
+                }
+            });
+        })
+    </script>
+{% endblock %}

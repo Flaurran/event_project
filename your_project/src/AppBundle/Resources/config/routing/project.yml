@@ -4,8 +4,34 @@ project_index:
 
 project_create:
   path: /create
-  defaults: { _controller: 'AppBundle:Project:create' }
+  defaults: { _controller: 'AppBundle:ManageProject:create' }
 
-project_edit:
-  path: /edit/{id}
-  defaults: { _controller: 'AppBundle:Project:edit' }
+project_manage:
+  path: /manage/{id}
+  defaults: { _controller: 'AppBundle:ManageProject:manage' }
+
+project_manage_update_ajax:
+  path: /manage/{id}/update-xhr
+  defaults: { _controller: 'AppBundle:ManageProject:updateAjax' }
+
+project_add_participant:
+  path: /manage/{id}/participant/add
+  defaults: { _controller: 'AppBundle:ManageProject:addParticipant' }
+
+
+project_read:
+  path: /read/{id}
+  defaults: { _controller: 'AppBundle:ReadProject:read' }
+
+project_participate:
+  path: /participate/{slug}
+  defaults: { _controller: 'AppBundle:ReadProject:participate' }
+
+project_participant_accepte:
+  path: /participate/{slug}/accepte
+  defaults: { _controller: 'AppBundle:ReadProject:choice', choice: 1 }
+
+
+project_participant_decline:
+  path: /participate/{slug}/decline
+  defaults: { _controller: 'AppBundle:ReadProject:choice', choice: 0 }

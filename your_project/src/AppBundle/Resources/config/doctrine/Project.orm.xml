@@ -5,15 +5,21 @@
 
     <!-- Titre, date, lieu, description, créateur, image background -->
     <entity name="AppBundle\Entity\Project" table="your_project" repository-class="AppBundle\Repository\ProjectRepository">
+        <lifecycle-callbacks>
+            <lifecycle-callback type="preUpdate" method="onPreUpdate"/>
+            <lifecycle-callback type="prePersist" method="onPrePersist"/>
+        </lifecycle-callbacks>
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO"/>
         </id>
         <field name="title" type="string" length="50"/>
-        <field name="date" type="date" />
+        <field name="date" type="datetime" />
         <field name="description" type="string" />
-        <field name="createdAt" type="date" />
-        <field name="updatedAt" type="date" />
+        <field name="createdAt" type="datetime" />
+        <field name="updatedAt" type="datetime" />
 
+        <one-to-many target-entity="AppBundle\Entity\Participant" mapped-by="project" field="participants" />
+        <one-to-many target-entity="AppBundle\Entity\Comment" mapped-by="project" field="comments" />
         <many-to-one target-entity="User" field="creator">
         </many-to-one>
     </entity>
