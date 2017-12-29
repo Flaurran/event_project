@@ -1,11 +1,30 @@
-<div>
-    <nav>
-        <ul>
-            <li><a>Accueil</a></li>
-            <li>
-                <a href="{{ path('project_create') }}">Créer un projet</a>
-            </li>
-            <li><a>Se déconnecter</a></li>
+<nav>
+    <ul>
+        <li><a>Accueil</a></li>
+        <li>
+            <a href="{{ path('project_create') }}">Créer un projet</a>
+        </li>
+        <li><a>Se déconnecter</a></li>
+    </ul>
+</nav>
+<header class="header">
+    <!-- Menu -->
+    <nav class="header__menu">
+        <!-- Logo -->
+        <div class="header__logo">
+            <a href="{{ path('homepage') }}">
+                <img src="{{ asset('assets/img/logoT.png') }}" alt="Logo Your Project">
+            </a>
+        </div>
+        <!-- Social Network -->
+        <ul class="header__social">
+            <li><a href="">FB</a></li>
+            <li><a href="">TW</a></li>
+            <li><a href="">G+</a></li>
         </ul>
+        <!-- Connexion -->
+        <div class="header__connexion">
+            S'inscrire | Connexion
+        </div>
     </nav>
-</div>
+</header>

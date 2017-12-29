@@ -2,9 +2,9 @@
 parameters:
     database_host: 127.0.0.1
     database_port: null
-    database_name: your-project
-    database_user: yourproject
-    database_password: yourproject
+    database_name: your_project
+    database_user: root
+    database_password:
     mailer_transport: smtp
     mailer_host: 127.0.0.1
     mailer_user: null
