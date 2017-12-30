@@ -62,3 +62,21 @@
     border-radius: $b-radius;
     font-weight: $fontW;
 }
+/**
+ * Wrapper
+ * @param $color:       color:               $blue
+ * @param $bc:          background-color:    $beige
+ * @param $padding:     padding:             1.5rem 0
+ * @param $br:          border-radius:       5px
+ */
+@mixin wrapper(
+    $color: $blue,
+    $bc: $beige,
+    $padding: 1.5rem 0,
+    $br: 5px) {
+
+    color: $color;
+    background-color: $bc;
+    padding: $padding;
+    border-radius: $br;
+}

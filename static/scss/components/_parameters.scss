@@ -4,11 +4,8 @@
 }
 
 .parameters__wrapper {
-  color: $blue;
-  background-color: $beige;
-  border-radius: 5px;
+  @include wrapper();
   height: 100%;
-  padding: 1.5rem 0;
 }
 
 .parameters__user {
