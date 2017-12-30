@@ -1,17 +1,16 @@
 .home {}
 
 .home__wrapper {
-  background: linear-gradient(
-                  rgba(0, 0, 0, 0.45),
-                  rgba(0, 0, 0, 0.45)
-  ),url('../../img/trip-adventure.jpeg');
-  background-size: cover;
   color: white;
   text-align: center;
+  height: 100%;
 }
 
 .home__start {
-  font-size: 1.2rem;
+  margin-top: 5rem;
+  p {
+    font-size: 1.5rem;
+  }
 
   button {
     @include button();

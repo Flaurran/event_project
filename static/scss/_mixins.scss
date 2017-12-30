@@ -42,7 +42,7 @@
 }
 
 /**
- * Remove bullets and margins, paddings from lists
+ * Button
  * @param $padding:     padding:             1rem 2rem
  * @param $bc:          background-color:    $blue
  * @param $b-radius:    border-radius:       5px
@@ -50,10 +50,10 @@
  * @param $fontW:       font-weight:         bold
  */
 @mixin button(
-    $padding: 1rem 2rem,
-    $bc: $blue,
+    $padding: 1rem 2.5rem,
+    $bc: $beige,
     $b-radius: 5px,
-    $color: white,
+    $color: $blue,
     $fontW: bold) {
 
     padding: $padding;

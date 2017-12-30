@@ -2,7 +2,7 @@
 $blue: #284F6A;
 $lightblue: #62B6D6;
 $purple: #AC92A6;
-$gray: #D5C7BC;
+$beige: #D5C7BC;
 
 /* Fonts */
 @font-face {
@@ -19,3 +19,10 @@ $font-primary: 'Arsenal','Arial','Helvetica','sans-serif';
 $font-secondary: 'Open-Sans','Arial','Helvetica','sans-serif';
 
 /* Global CSS */
+body {
+  background: linear-gradient(
+                  rgba(0, 0, 0, 0.45),
+                  rgba(0, 0, 0, 0.45)
+  ),url("../img/trip-organisation.jpeg") no-repeat center center fixed;
+  background-size: cover;
+}

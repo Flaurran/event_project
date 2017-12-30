@@ -2,15 +2,14 @@
 
 .home__wrapper {
   @include flex-grid-row;
-  @include flex-align(center, stretch);
-  height: 100%;
+  @include flex-align(center);
 }
 
 .home__start {
   @include flex-grid-column;
   @include flex;
   @include flex-direction(column);
-  @include flex-align(center, middle);
+  @include flex-align(left,middle);
 
   p {
     width: 50%;
