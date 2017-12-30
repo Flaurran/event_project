@@ -18,5 +18,5 @@
 .header__connexion {
   @include flex-grid-column(1 of 3);
   @include flex;
-  @include flex-align(center, middle);
+  @include flex-align(right, middle);
 }
