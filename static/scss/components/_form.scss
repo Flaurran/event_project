@@ -1,0 +1,15 @@
+.form {
+  margin-top: 6rem;
+}
+
+.form__wrapper {
+  @include wrapper();
+
+  label {
+    color: $blue;
+  }
+
+  button {
+    @include button($bc: $blue, $color: white);
+  }
+}
