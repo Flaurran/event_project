@@ -1,8 +1,95 @@
 .project {
-
 }
 
-.project__description {
+.project__wrapper {
+  @include wrapper();
+}
+
+.project__wrapper--header {
+  margin-bottom: 2rem;
+  padding-top: 0;
+}
+
+.project__comments {
+  border-left: 1px solid $blue;
+
+  img {
+    width: 50px;
+    height:50px;
+  }
+
+  form {
+    margin-left: 1rem;
+  }
+}
+
+.project__comment {
+  p {
+    margin: 0 0 0.5rem 1rem;
+  }
+}
+
+.comment {
+  button {
+    @include button($bc: $blue, $color: white);
+  }
+}
+
+.project__upload-zone {
   background-color: white;
-  color: $purple;
+  height: 150px;
+}
+
+.project__upload {
+
+  img {
+    height: 100px;
+    width: 100px;
+    background-color: $purple;
+    margin: 1rem 1rem 0.5rem;
+  }
+
+  span {
+    margin-left: 1rem;
+  }
+}
+
+.project__header {
+  height: 200px;
+  overflow: hidden;
+
+  img {
+
+  }
+}
+
+.project__participants {
+  width: 100%;
+
+  ul {
+    @include update-list($margin: 1rem 0 0);
+
+    img {
+      width: 30px;
+    }
+  }
+}
+
+.project__participation {
+  div {
+    background-color: white;
+    height: 30px;
+    width: 100%;
+  }
+}
+
+.project__participants-avatar {
+
+  li {
+    margin: 0 0.5rem;
+  }
+}
+
+.project__participation {
+  margin: 1rem 0 0;
 }

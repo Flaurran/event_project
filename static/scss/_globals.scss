@@ -26,3 +26,11 @@ body {
   ),url("../img/trip-organisation.jpeg") no-repeat center center fixed;
   background-size: cover;
 }
+
+h1, h2, h3, h4 {
+  font-family: $font-primary;
+}
+
+p, ul, li, span, div {
+  font-family: $font-secondary;
+}

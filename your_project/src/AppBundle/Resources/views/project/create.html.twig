@@ -1,7 +1,11 @@
 {% extends 'AppBundle:layout:layout.html.twig' %}
 
 {% block content %}
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    {{ form_end(form) }}
+    <section class="form">
+        <div class="form__wrapper">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+        </div>
+    </section>
 {% endblock %}

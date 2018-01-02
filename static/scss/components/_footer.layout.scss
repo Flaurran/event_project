@@ -2,6 +2,8 @@
 
 .footer__menu {
   @include flex-grid-row;
+  @include flex;
+  @include flex-align(left,middle);
 }
 
 
@@ -12,6 +14,5 @@
 .footer__links {
   @include flex-grid-column(2 of 3);
   @include flex;
-  @include flex-align(right);
-
+  @include flex-align(right, middle);
 }

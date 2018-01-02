@@ -1,0 +1,17 @@
+.dashbord {}
+
+.dashbord__wrapper {
+  @include flex-grid-row();
+}
+
+.dashbord__title {
+  @include flex-grid-column(100%);
+}
+
+.dashbord__filter {
+  @include flex-grid-column(30%);
+}
+
+.dashbord__content {
+  @include flex-grid-column(70%);
+}

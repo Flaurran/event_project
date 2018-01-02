@@ -1,14 +1,28 @@
-.footer {}
+.footer {
+  background-color: $beige;
+  margin-top: 6rem;
+}
 
 .footer__menu {
-  background-color: $purple;
+  height: 45px;
+  color: $blue;
+
+  a, a:visited {
+    color: $blue;
+    text-decoration: none;
+  }
 }
 
 .footer__copy {
-  padding: 0.5rem 0.5rem;
+  margin: 0;
 }
 
 .footer__links {
-  @include update-list();
+  margin: 0;
+  list-style-type: none;
 
+  li:not(:last-child) {
+    margin-right: 0.5rem;
+    //remove margin on last
+  }
 }
