@@ -21,9 +21,9 @@
 */vendor/
 
 # Assets and user uploads
-/web/bundles/
-/web/uploads/
-/static/css/app.css
+#/web/bundles/
+#/web/uploads/
+#/static/css/app.css
 
 # Bower and Node modules
 */bower_components/
