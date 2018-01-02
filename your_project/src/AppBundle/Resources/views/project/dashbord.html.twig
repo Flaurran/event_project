@@ -1,0 +1,31 @@
+{% extends 'AppBundle:layout:layout.html.twig' %}
+
+{% block content %}
+<section class="dashbord">
+    <div class="dashbord__wrapper">
+        <div class="dashbord__title">
+            <h1>Tableau de bord</h1>
+        </div>
+        <div class="dashbord__filter">
+            <article class="dashbord__project">
+                <ul>
+                    <li><a href="">Tous les projets</a></li>
+                    <li><a href="">Mes projets</a></li>
+                    <li><a href="">Je participe</a></li>
+                </ul>
+                <img src="{{ asset('assets/img/datepicker.jpg') }}" alt="">
+            </article>
+        </div>
+        <div class="dashbord__content">
+            {% for i in 0..4  %}
+                <article class="dashbord__project">
+                    <img src="{{ asset('assets/img/meeting.jpg') }}" alt="">
+                    <h3>Titre event</h3>
+                    <p><i class="fa fa-calendar" aria-hidden="true"></i>19 janvier 2018 - 17h45</p>
+                    <p><i class="fa fa-map-marker" aria-hidden="true"></i>Toulouse</p>
+                </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

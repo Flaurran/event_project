@@ -1,0 +1,64 @@
+.dashbord {}
+
+.dashbord__wrapper {
+  @include wrapper();
+}
+
+.dashbord__title {
+  h1 {
+    border-bottom: 1px solid $blue;
+    margin: 0;
+    padding-bottom: 1rem;
+  }
+}
+
+
+.dashbord__filter {
+
+  a,a:visited {
+    color: $blue;
+    text-decoration: none;
+  }
+
+  ul {
+    @include update-list($margin: 0 0 1rem 0);
+
+    li {
+      margin: 0.5rem 0;
+    }
+  }
+
+  img {
+    width: 200px;
+  }
+}
+
+.dashbord__project {
+  background-color: white;
+  border: 1px solid $blue;
+  padding: 1rem;
+  width: 245px;
+  margin: 2rem 1.5rem 0 0;
+
+  img {
+    width: 245px;
+    overflow: hidden;
+  }
+
+  h3, p {
+    margin: 0.5rem 0;
+  }
+
+  i {
+    margin-right: 0.5rem;
+  }
+}
+
+.dashbord__content {
+  @include flex;
+  flex-wrap: wrap;
+
+  .dashbord__project:last-of-type {
+    margin-right: 0;
+  }
+}
