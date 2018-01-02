@@ -1,0 +1,83 @@
+{% extends 'AppBundle:layout:layout.html.twig' %}
+
+{% block content %}
+    <section class="project">
+        <div class="project__wrapper project__wrapper--header">
+            <div class="project__header">
+                <img src="{{ asset('assets/img/meeting.jpg') }}" alt="Image de l'évènement">
+            </div>
+            <div class="project__participants">
+                <p class="project__nb-participants">13 participants</p>
+                <ul class="project__participants-avatar">
+                    <li><img src="{{ asset('assets/img/avatar.png') }}" alt=""></li>
+                    <li><img src="{{ asset('assets/img/avatar.png') }}" alt=""></li>
+                    <li><img src="{{ asset('assets/img/avatar.png') }}" alt=""></li>
+                    <li><img src="{{ asset('assets/img/avatar.png') }}" alt=""></li>
+                    <li><img src="{{ asset('assets/img/avatar.png') }}" alt=""></li>
+                    <li><img src="{{ asset('assets/img/avatar.png') }}" alt=""></li>
+                    <li>...</li>
+                </ul>
+                <div class="project__participation">
+                    <div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="project__wrapper">
+            <article class="project__content">
+                <div class="project__definition">
+                    <h2>Je suis le titre de l'évènement</h2>
+                    <p>Le jeudi 15 janvier à 16h45</p>
+                    <p>31400 Toulouse</p>
+                    <img src="" alt="Je représente la map du lieu de l'évènement">
+                    <p>Je suis une longue description d'évènement.
+                        Je me doit d'être assez long en vue de pouvoir bien montrer l'étendu de ma puissance.
+                        Toujours vivant, rassurez vous, toujours la banane, toujours debout.
+                        Toujours vivant, rassurez vous, toujours la banane, toujours debout.
+                        Toujours vivant, rassurez vous, toujours la banane, toujours debout.
+                        Toujours vivant, rassurez vous, toujours la banane, toujours debout.
+                        Toujours vivant, rassurez vous, toujours la banane, toujours debout.
+                        Toujours vivant, rassurez vous, toujours la banane, toujours debout.
+                    </p>
+                    <div class="project__upload-zone">
+                        <div class="project__upload">
+                            <img src="" alt="">
+                            <span>Nom fichier</span>
+                        </div>
+                        <div class="project__upload">
+                            <img src="" alt="">
+                            <span>Nom fichier</span>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <aside class="project__comments">
+                <h2>Commentaires</h2>
+                <div class="project__comment">
+                    <img src="" alt="Avatar">
+                    <div class="comment">
+                        <p>Jean Michel</p>
+                        <p>Je suis le commentaire</p>
+                    </div>
+                </div>
+                <div class="project__comment">
+                    <img src="" alt="Avatar">
+                    <div class="comment">
+                        <p>Jean Michel</p>
+                        <p>Je suis le commentaire</p>
+                    </div>
+                </div>
+                <div class="project__comment">
+                    <img src="" alt="Avatar">
+                    <div class="comment">
+                        <p>Nom connecté</p>
+                        <form action="">
+                            <textarea name="" id="" cols="30" rows="3"></textarea>
+                            <button>Commenter</button>
+                        </form>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </section>
+{% endblock %}

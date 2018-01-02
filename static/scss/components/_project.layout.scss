@@ -1,4 +1,4 @@
-.project {
+/*.project {
   @include flex;
   @include flex-direction(row);
 }
@@ -16,4 +16,58 @@
 .project__description--home {
   @include flex;
   @include flex-direction(column);
+}*/
+
+.project {
+
+}
+
+.project__wrapper {
+  @include flex-grid-row();
+}
+
+.project__content {
+  @include flex-grid-column(70%);
+}
+
+.project__comments {
+  @include flex-grid-column(30%);
+}
+
+.project__comment {
+  @include flex;
+}
+
+.comment {
+  @include flex;
+  @include flex-direction(column);
+}
+
+.project__upload-zone {
+  @include flex;
+}
+
+.project__upload {
+  @include flex;
+  @include flex-direction(column);
+}
+
+.project__participants {
+  @include flex;
+  @include flex-grid-row();
+
+}
+
+.project__nb-participants {
+  @include flex-grid-column(20%);
+}
+
+.project__participants-avatar {
+  @include flex-grid-column(60%);
+  @include flex;
+
+}
+
+.project__participation {
+  @include flex-grid-column(20%);
 }

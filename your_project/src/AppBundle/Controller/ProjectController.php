@@ -17,7 +17,7 @@ class ProjectController extends BaseController
      */
     public function indexAction(Request $request)
     {
-        return new Response('Not implement');
+        return $this->render('AppBundle:project:project.html.twig');
     }
 
     /**
