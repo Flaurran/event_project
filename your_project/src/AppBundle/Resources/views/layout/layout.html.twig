@@ -4,9 +4,14 @@
     <div id="menu">
         {% include '@App/includes/menu.html.twig' %}
     </div>
-{% endblock  %}
+{% endblock %}
+
 {% block message %}
     <div id="message">
         {% include '@App/includes/messages.html.twig' %}
     </div>
+{% endblock %}
+
+{% block footer %}
+    {% include '@App/includes/footer.html.twig' %}
 {% endblock %}
