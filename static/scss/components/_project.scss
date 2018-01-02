@@ -12,6 +12,15 @@
 
 .project__comments {
   border-left: 1px solid $blue;
+
+  img {
+    width: 50px;
+    height:50px;
+  }
+
+  form {
+    margin-left: 1rem;
+  }
 }
 
 .project__comment {

@@ -32,6 +32,11 @@
 
 .project__comments {
   @include flex-grid-column(30%);
+
+  form {
+    @include flex;
+    @include flex-direction(column);
+  }
 }
 
 .project__comment {
