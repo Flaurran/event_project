@@ -1,14 +1,33 @@
-<div>
-    <nav>
-        <ul>
-            <li><a>Accueil</a></li>
-            <li>
-                <a href="{{ path('project_index') }}">Mes projets</a>
-            </li>
-            <li>
-                <a href="{{ path('project_create') }}">Créer un projet</a>
-            </li>
-            <li><a>Se déconnecter</a></li>
+<header class="header">
+    <!-- Menu -->
+    <nav class="header__menu">
+        <!-- Logo -->
+        <div class="header__logo">
+            <a href="{{ path('homepage') }}">
+                <img src="{{ asset('assets/img/logoT.png') }}" alt="Logo Your Project">
+            </a>
+        </div>
+        <!-- Social Network -->
+        <ul class="header__social">
+            <li><a href=""><i class="fa fa-facebook" aria-hidden="true">Facebook</i></a></li>
+            <li><a href=""><i class="fa fa-twitter" aria-hidden="true">Twitter</i></a></li>
+            <li><a href=""><i class="fa fa-google-plus" aria-hidden="true">Google plus</i></a></li>
         </ul>
+        <!-- Connexion -->
+        <div class="header__connexion">
+            {% if app.user is null %}
+                <a href="{{ path('fos_user_registration_register') }}">S'inscrire</a>
+                <a href="{{ path('fos_user_security_login') }}">Connexion</a>
+            {% else %}
+                <a href="{{ path('fos_user_security_logout') }}">Se déconnecter</a>
+            {% endif %}
+        </div>
+        {% if app.user is not null %}
+            <ul>
+                <li><a href="{{ path('homepage') }}">Accueil</a></li>
+                <li><a href="{{ path('project_index') }}">Mes projets</a></li>
+                <li><a href="{{ path('project_create') }}">Créer un projet</a></li>
+            </ul>
+        {% endif %}
     </nav>
-</div>
+</header>

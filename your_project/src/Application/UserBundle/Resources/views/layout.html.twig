@@ -1,5 +1,27 @@
-{% block title %}Demo Application{% endblock %}
+{% extends '@App/layout/layout.html.twig' %}
+
+{% block menu %}
+        {% include '@App/includes/menu.html.twig' %}
+{% endblock  %}
 
 {% block content %}
-    {% block fos_user_content %}{% endblock %}
+<section class="parameters">
+    <div class="parameters__wrapper">
+        <div class="parameters__header">
+            <h1 class="parameters__title">Parametres du compte</h1>
+        </div>
+        <div class="parameters__user">
+            <div class="parameters__informations">
+                {% block fos_user_content %}{% endblock %}
+                <p>Sexe : @Todo</p>
+                <button class="parameters__button">Changer le mot de passe</button>
+                <button class="parameters__button">Editer le profil</button>
+            </div>
+        </div>
+        <div class="parameters__avatar">
+            <img src="https://s3.amazonaws.com/ceblog/wp-content/uploads/2012/0œ5/lorem-ipsum1.jpg" alt="">
+        </div>
+    </div>
+</section>
+
 {% endblock %}

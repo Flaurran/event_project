@@ -3,6 +3,7 @@ namespace AppBundle\Manager;
 
 use AppBundle\Entity\Participant;
 use AppBundle\Entity\Project;
+use AppBundle\Exception\ParticipantNotFoundException;
 
 class ParticipantManager extends Manager
 {
@@ -91,6 +92,20 @@ class ParticipantManager extends Manager
     {
         $participant->setStatus($status);
         $this->canBeSave($participant, $save, $flush);
+        return $participant;
+    }
+
+    /**
+     * @param $id
+     *
+     * @return Participant
+     */
+    public function findParticipantById($id)
+    {
+        $participant = $this->find($id);
+        if (! $participant || ! ($participant instanceof Participant) ) {
+            throw new ParticipantNotFoundException('Participant with @id=' . $id . ' not found');
+        }
         return $participant;
     }
 }

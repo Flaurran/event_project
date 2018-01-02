@@ -1,5 +1,5 @@
 {% if project is defined %}
-    {% set isCreator = app.user is not null and (app.user.id == project.creator.id or app.user.hasRole('ROLE_ADMIN') ) %}
+    {% set isCreator = readOnly is not defined and app.user is not null and (app.user.id == project.creator.id or app.user.hasRole('ROLE_ADMIN') ) %}
     <div>
         [Créé le {{ project.createdAt.format('d/m/Y H:i:s') }} par {{ project.creator.username }}]
     </div>

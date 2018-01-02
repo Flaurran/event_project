@@ -48,6 +48,11 @@ class Comment implements AuthorInterface
     private $authorEntity;
 
     /**
+     * @var string
+     */
+    private $authorName;
+
+    /**
      * Set content
      *
      * @param string $content
@@ -218,5 +223,29 @@ class Comment implements AuthorInterface
     {
         return $this->authorType === AuthorInterface::AUTHOR_TYPE_USER;
     }
-}
 
+
+    /**
+     * Set authorName
+     *
+     * @param string $authorName
+     *
+     * @return Comment
+     */
+    public function setAuthorName($authorName)
+    {
+        $this->authorName = $authorName;
+
+        return $this;
+    }
+
+    /**
+     * Get authorName
+     *
+     * @return string
+     */
+    public function getAuthorName()
+    {
+        return $this->authorName;
+    }
+}

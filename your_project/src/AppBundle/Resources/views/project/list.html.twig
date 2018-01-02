@@ -1,27 +1,29 @@
 {% extends '@App/layout/layout.html.twig' %}
 
 {% block content %}
-    <div>
-        <h1>Mes projets</h1>
-        <table>
-            <thead>
+    {% for title. projectList in projects %}
+        <div>
+            <h1>{{ title }}</h1>
+            <table>
+                <thead>
                 <tr>
                     <th>#</th>
                     <th>Title</th>
                     <th>Description</th>
                     <th>Date</th>
                 </tr>
-            </thead>
-            <tbody>
-                {% for project in projects %}
+                </thead>
+                <tbody>
+                {% for project in projectList %}
                     <tr>
-                        <td><a href="{{ path('project_manage', {'id': project.id }) }}">{{ project.id }}</a></td>
+                        <td><a href="{% if app.user == project.creator or app.user.isAdmin %}{{ path('project_manage', {'id': project.id }) }}{% else %}{{ path('project_read', {'id': project.id}) }}{% endif %}">{{ project.id }}</a></td>
                         <td>{{ project.title }}</td>
                         <td>{{ project.description }}</td>
                         <td>{{ project.date|date('d-m-Y H:i:s') }}</td>
                     </tr>
                 {% endfor %}
-            </tbody>
-        </table>
-    </div>
+                </tbody>
+            </table>
+        </div>
+    {% endfor %}
 {% endblock %}

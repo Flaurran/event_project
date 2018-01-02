@@ -9,3 +9,7 @@ project:
 comment:
   prefix: /comment
   resource: '@AppBundle/Resources/config/routing/comment.yml'
+
+participant:
+  prefix: /participant
+  resource: '@AppBundle/Resources/config/routing/participant.yml'

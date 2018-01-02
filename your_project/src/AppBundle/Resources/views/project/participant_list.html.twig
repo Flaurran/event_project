@@ -3,7 +3,10 @@
     <ul>
         {# for participantStatusLabel => use picto ? #}
         {% for participant in participants %}
-            <li>[{{ participant.statusLabel }}] {{ participant.fullName }}</li>
+            <li>
+                {% if isCreator is defined and isCreator %}<a href="{{ path('participant_remove', {'id': participant.id}) }}">x</a> {% endif %}
+                [{{ participant.statusLabel }}] {{ participant.fullName }}
+            </li>
         {% endfor %}
     </ul>
 {% else %}

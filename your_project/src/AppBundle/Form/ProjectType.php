@@ -2,7 +2,9 @@
 
 namespace AppBundle\Form;
 
+use AppBundle\Entity\Project;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\SubmitButton;
@@ -19,6 +21,9 @@ class ProjectType extends AbstractType
             ->add('title')
             ->add('date')
             ->add('description')
+            ->add('context', ChoiceType::class, [
+                'choices' => Project::getAllContexts()
+            ])
             ->add('submit', SubmitType::class, [])
             ;
     }

@@ -59,4 +59,12 @@ class User extends BaseUser implements AuthorEntityInterface
     {
         return $this->username;
     }
+
+    /**
+     * @return bool
+     */
+    public function isAdmin()
+    {
+        return $this->hasRole('ROLE_ADMIN');
+    }
 }

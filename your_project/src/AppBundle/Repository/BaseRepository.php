@@ -10,6 +10,8 @@ namespace AppBundle\Repository;
  */
 class BaseRepository extends \Doctrine\ORM\EntityRepository
 {
+    const BASE_REPOSITORY_ALIAS = 'baserepository';
+    const BASE_REPOSITORY_DELETE_ENTITY_ALIAS = 'deleteentity';
     /**
      * @param array $orderBy
      *
@@ -17,11 +19,26 @@ class BaseRepository extends \Doctrine\ORM\EntityRepository
      */
     public function findAllOrderBy(array $orderBy)
     {
-        $alias = 'baserepository';
-        $qb = $this->createQueryBuilder($alias);
+        $qb = $this->createQueryBuilder(self::BASE_REPOSITORY_ALIAS);
         foreach ($orderBy as $field => $type) {
-            $qb->addOrderBy(sprintf('%s.%s', $alias, $field), $type);
+            $qb->addOrderBy(sprintf('%s.%s', self::BASE_REPOSITORY_ALIAS, $field), $type);
         }
+        return $qb->getQuery()->getResult();
+    }
+
+    /**
+     * @param $entity
+     *
+     * @return array
+     */
+    public function remove($entity)
+    {
+        $qb = $this->createQueryBuilder(self::BASE_REPOSITORY_ALIAS);
+        $qb
+            ->delete(get_class($entity), self::BASE_REPOSITORY_DELETE_ENTITY_ALIAS)
+            ->where(self::BASE_REPOSITORY_DELETE_ENTITY_ALIAS . ' = :entity')
+            ->setParameter('entity', $entity)
+        ;
         return $qb->getQuery()->getResult();
     }
 }

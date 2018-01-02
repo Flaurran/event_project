@@ -1,5 +1,5 @@
 <h2>Commentaires</h2>
-{% set canRemove = (project is defined and project.creator == app.user) or is_granted('ROLE_ADMIN') %}
+{% set canRemove = readOnly is not defined and ((project is defined and project.creator == app.user) or is_granted('ROLE_ADMIN')) %}
 {% if comments is defined %}
     {% if comments|length == 0 %}
         <div>Pas de commentaires</div>
@@ -12,7 +12,7 @@
                     (participant is not null and comment.authorIsParticipant and comment.author == participant.id)%}
                     <span><a href="{{ path('comment_remove', {'id': comment.id}) }}">x</a></span>
                 {% endif %}
-                <span>[{{ comment.createdAt|date('d/m/Y H:i:s') }}] {{ comment.authorEntity.authorName }} : {{ comment.content|raw }}</span>
+                <span>[{{ comment.createdAt|date('d/m/Y H:i:s') }}] {{ comment.authorName }} : {{ comment.content|raw }}</span>
             </div>
         {% endfor %}
     {% endif %}

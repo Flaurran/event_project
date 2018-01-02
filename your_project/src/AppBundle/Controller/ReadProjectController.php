@@ -18,6 +18,8 @@ class ReadProjectController extends ProjectController
         /** @var Project $project */
         $project = $this->getProjectManager()->find($id);
 
+        //TODO: BAD, if 200 comments, load 200 entity with 200 requests
+        $this->getCommentManager()->calculate($project->getComments());
         return $this->render('@App/project/read.html.twig', [
             'project' => $project
         ]);
@@ -39,8 +41,6 @@ class ReadProjectController extends ProjectController
                 ]);
             }
         }
-        //TODO: BAD, if 200 comments, load 200 entity with 200 requests
-        $this->getCommentManager()->calculate($project->getComments());
 
         return $this->render('@App/project/participate.html.twig', [
             'project' => $project,

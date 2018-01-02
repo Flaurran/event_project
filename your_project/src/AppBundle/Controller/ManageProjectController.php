@@ -47,6 +47,7 @@ class ManageProjectController extends ProjectController
                 ]);
             }
         }
+
         return $this->render('AppBundle:project:manage.html.twig', [
             'project' => $project,
             'form' => $form->createView(),

@@ -107,9 +107,23 @@ abstract class Manager
      * @param array $orderBy
      * @return array
      */
-    protected function findAll(array $orderBy = [])
+    public function findAll(array $orderBy = [])
     {
         return $this->getRepository()->findAllOrderBy($orderBy);
+    }
+
+    /**
+     * @param $entity
+     *
+     * @return int rows deleted
+     */
+    public function remove($entity)
+    {
+        if (! $entity instanceof $this->className) {
+            $className = is_object($entity) ? get_class($entity) : 'None object';
+            throw new \LogicException("Cannot remove an other object than {$this->className} . \"$className\" given");
+        }
+        return $this->getRepository()->remove($entity);
     }
 
     /**
@@ -118,7 +132,7 @@ abstract class Manager
      *
      * @return array
      */
-    protected function findBy(array $criteria, array $orderBy = [])
+    public function findBy(array $criteria, array $orderBy = [])
     {
         return $this->getRepository()->findBy($criteria, $orderBy);
     }

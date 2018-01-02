@@ -1,0 +1,35 @@
+.parameters {
+  margin-top: 6rem;
+  height: 50%;
+}
+
+.parameters__wrapper {
+  @include wrapper();
+  height: 100%;
+}
+
+.parameters__user {
+}
+
+.parameters__header {
+}
+
+.parameters__title {
+  border-bottom: 1px solid $blue;
+  margin: 0;
+  width: 100%;
+  padding-bottom: 1rem;
+}
+
+.parameters__button {
+  @include button($bc: $blue, $color: white);
+}
+
+.parameters__informations {
+}
+
+.parameters__avatar {
+  img {
+    height: 250px;
+  }
+}

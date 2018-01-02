@@ -1,0 +1,22 @@
+.parameters {
+
+}
+
+.parameters__wrapper {
+  @include flex-grid-row();
+}
+
+.parameters__header {
+  @include flex-grid-column(100%);
+}
+.parameters__title {
+
+}
+
+.parameters__user {
+  @include flex-grid-column(2 of 3);
+}
+
+.parameters__avatar {
+  @include flex-grid-column(1 of 3);
+}

@@ -9,6 +9,10 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Project
 {
+    const CONTEXT_PRIVATE = 0;
+
+    const CONTEXT_PUBLIC = 1;
+
     /**
      * @var int
      */
@@ -58,10 +62,16 @@ class Project
      */
     private $comments;
 
+    /**
+     * @var integer
+     */
+    private $context;
+
 
     public function __construct()
     {
         $this->participants = new ArrayCollection();
+        $this->context = self::CONTEXT_PRIVATE;
     }
 
     /**
@@ -299,5 +309,40 @@ class Project
     public function getComments()
     {
         return $this->comments;
+    }
+
+    /**
+     * Set context
+     *
+     * @param integer $context
+     *
+     * @return Project
+     */
+    public function setContext($context)
+    {
+        $this->context = $context;
+
+        return $this;
+    }
+
+    /**
+     * Get context
+     *
+     * @return integer
+     */
+    public function getContext()
+    {
+        return $this->context;
+    }
+
+    /**
+     * @return array
+     */
+    public static function getAllContexts()
+    {
+        return [
+            'Privé' => self::CONTEXT_PRIVATE,
+            'Public' => self:: CONTEXT_PUBLIC
+        ];
     }
 }

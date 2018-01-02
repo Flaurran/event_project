@@ -1,0 +1,25 @@
+.home {}
+
+.home__wrapper {
+  color: white;
+  text-align: center;
+  height: 100%;
+}
+
+.home__start {
+  margin-top: 5rem;
+  p {
+    font-size: 1.5rem;
+  }
+
+  button {
+    @include button();
+  }
+}
+
+.home__project {
+
+  img {
+    height:100px;
+  }
+}

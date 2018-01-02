@@ -1,0 +1,41 @@
+.header {
+  background-color: $beige;
+  a, a:visited{
+    color:$blue;
+    text-decoration: none;
+  }
+}
+
+.header__menu {
+
+  color: white;
+  height: 50px;
+}
+
+.header__logo {
+  margin-top: 0.5rem;
+  position: relative;
+  height:100%;
+  img {
+    height: 115px;
+  }
+}
+
+.header__social {
+  margin: 0;
+  list-style-type: none;
+  font-size: 25px;
+  height:100%;
+
+  li:not(:last-of-type) {
+    margin-right: 1rem;
+  }
+}
+
+.header__connexion {
+  height:100%;
+
+  a:first-of-type {
+    margin-right: 1rem;
+  }
+}

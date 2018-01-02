@@ -48,11 +48,56 @@ class ProjectManager extends Manager
      */
     public function findByUser(User $user)
     {
+        return [
+            'public' => $this->findPublic(),
+            'private' => $this->findPrivate($user),
+            'mine' => $this->findProjectByCreator($user)
+        ];
+    }
+
+    /**
+     * @param User $user
+     *
+     * @return array
+     */
+    public function findProjectByCreator(User $user)
+    {
         $orderBy = [
             'date' => 'DESC'
         ];
-        return $user->hasRole('ROLE_ADMIN') ? $this->findAll($orderBy) : $this->findBy([
+
+        return $this->findBy([
             'creator' => $user
         ], $orderBy);
+    }
+    /**
+     * @return array
+     */
+    public function findPublic()
+    {
+        $orderBy = [
+            'date' => 'DESC'
+        ];
+
+        return $this->findBy([
+            'context' => Project::CONTEXT_PUBLIC
+        ], $orderBy);
+    }
+
+    /**
+     * @param User $user
+     *
+     * @return array
+     */
+    public function findPrivate(User $user)
+    {
+        $orderBy = [
+            'date' => 'DESC'
+        ];
+        $by = [ 'context' => Project::CONTEXT_PRIVATE ];
+        if (! $user->isAdmin()) {
+            $by['creator'] = $user;
+        }
+        return $this->findBy($by, $orderBy);
     }
 }
