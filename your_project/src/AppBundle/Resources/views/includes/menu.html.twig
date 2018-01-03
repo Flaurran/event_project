@@ -23,18 +23,11 @@
                 <a id="menu-dropdown">{{ app.user.username }}<i class="fa fa-caret-down" aria-hidden="true"></i>
                 </a>
                 <ul class="header__dropdown">
-                    <li><a href="">Tableau de bord</a></li>
-                    <li><a href="">Configuration</a></li>
+                    <li><a href="{{ path('project_index') }}">Tableau de bord</a></li>
+                    <li><a href="{{ path('fos_user_profile_show') }}">Configuration</a></li>
                     <li><a href="{{ path('fos_user_security_logout') }}">Se déconnecter</a></li>
                 </ul>
             {% endif %}
         </div>
-        {% if app.user is not null %}
-            <ul>
-                <li><a href="{{ path('homepage') }}">Accueil</a></li>
-                <li><a href="{{ path('project_index') }}">Mes projets</a></li>
-                <li><a href="{{ path('project_create') }}">Créer un projet</a></li>
-            </ul>
-        {% endif %}
     </nav>
 </header>

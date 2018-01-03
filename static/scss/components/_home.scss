@@ -11,8 +11,9 @@
     font-size: 1.5rem;
   }
 
-  button {
+  a {
     @include button();
+    text-decoration: none;
   }
 }
 
