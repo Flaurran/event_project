@@ -40,3 +40,42 @@
     margin-right: 1rem;
   }
 }
+
+ .header__connexion {
+   position: relative;
+   color: $blue;
+   cursor: pointer;
+
+   img {
+     height: 35px;
+     width: 35px;
+     margin-right: 5px;
+   }
+
+   i {
+     margin-left: 5px;
+   }
+ }
+
+.header__dropdown {
+  display: none;
+  list-style-type: none;
+  position: absolute;
+  border-top: 1px solid $blue;
+  background-color: $beige;
+  min-width: 160px;
+  padding: 12px 16px;
+  z-index: 1;
+  top: 34px;
+}
+
+.header__activated {
+
+  .header__dropdown {
+    display: block;
+  }
+
+  i {
+    transform: rotate(180deg);
+  }
+}
