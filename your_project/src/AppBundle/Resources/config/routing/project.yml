@@ -38,3 +38,7 @@ project_participant_decline:
 project_participant_maybe:
   path: /participate/{slug}/maybe
   defaults: { _controller: 'AppBundle:ReadProject:choice', choice: 3 }
+
+project_participant_remove_comment:
+  path: /participate/{slug}/{commentId}
+  defaults: { _controller: 'AppBundle:ReadProject:participantRemoveComment' }

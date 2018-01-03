@@ -28,6 +28,7 @@ class Comment implements AuthorInterface
     private $id;
 
     /**
+     * @var integer
      */
     private $author;
 
@@ -127,7 +128,7 @@ class Comment implements AuthorInterface
     /**
      * Get author
      *
-     * @return \AppBundle\Entity\User
+     * @return integer
      */
     public function getAuthor()
     {
