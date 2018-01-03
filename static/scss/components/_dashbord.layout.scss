@@ -9,9 +9,45 @@
 }
 
 .dashbord__filter {
-  @include flex-grid-column(30%);
+  @include flex-grid-column(28%);
 }
 
 .dashbord__content {
-  @include flex-grid-column(70%);
+  @include flex-grid-column(72%);
+  @include flex;
+  @include flex-align(justify);
+  flex-wrap: wrap;
+}
+
+@include breakpoint(medium down) {
+  .dashbord__filter {
+    @include flex-grid-column(35%);
+  }
+
+  .dashbord__content {
+    @include flex-grid-column(65%);
+    @include flex;
+    @include flex-align(spaced);
+  }
+}
+
+@include breakpoint(medium only) {
+
+  .dashbord__content {
+    @include flex;
+    @include flex-align(spaced);
+  }
+}
+
+@include breakpoint(small only) {
+  .dashbord__filter {
+    @include flex-grid-column(100%);
+    @include flex;
+    @include flex-align(center,middle);
+  }
+
+  .dashbord__content {
+    @include flex-grid-column(100%);
+    @include flex;
+  }
 }

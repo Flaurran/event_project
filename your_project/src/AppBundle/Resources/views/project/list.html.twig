@@ -1,29 +1,43 @@
 {% extends '@App/layout/layout.html.twig' %}
 
 {% block content %}
-    {% for title. projectList in projects %}
-        <div>
-            <h1>{{ title }}</h1>
-            <table>
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Date</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for project in projectList %}
-                    <tr>
-                        <td><a href="{% if app.user == project.creator or app.user.isAdmin %}{{ path('project_manage', {'id': project.id }) }}{% else %}{{ path('project_read', {'id': project.id}) }}{% endif %}">{{ project.id }}</a></td>
-                        <td>{{ project.title }}</td>
-                        <td>{{ project.description }}</td>
-                        <td>{{ project.date|date('d-m-Y H:i:s') }}</td>
-                    </tr>
+    <section class="dashbord">
+        <div class="dashbord__wrapper">
+            <div class="dashbord__title">
+                <h1>Tableau de bord</h1>
+            </div>
+            <div class="dashbord__filter">
+                <article class="dashbord__project dashbord__project--filter">
+                    <ul>
+                        <li><a href="">Tous les projets</a></li>
+                        <li><a href="">Mes projets</a></li>
+                        <li><a href="">Je participe</a></li>
+                    </ul>
+                    <img src="{{ asset('assets/img/datepicker.jpg') }}" alt="">
+                </article>
+            </div>
+            <div class="dashbord__content">
+                {% for projectList in projects %}
+                    {% for project in projectList %}
+                        <article class="dashbord__project">
+                            <a href="{{ path('project_read', {'id': project.id }) }}">
+                                <div class="dashbord__project-image">
+                                    <img src="{{ asset('assets/img/meeting.jpg') }}" alt="Image événement">
+                                    {% if project.context == 0 %}
+                                        <p>Privée</p>
+                                    {% endif %}
+                                    {#<a id="dashbord__project-link" href="">Voir</a>#}
+                                </div>
+                                <h3>{{ project.title }}</h3>
+                                <p><i class="fa fa-calendar" aria-hidden="true"></i>{{ project.date|date('d-m-Y H:i:s') }}</p>
+                                {#<p><i class="fa fa-map-marker" aria-hidden="true"></i>Toulouse</p>#}
+                                <p>{{ project.description|length > 50 ? project.description|slice(0, 50) ~ '...' : project.description  }}</p>
+                            </a>
+                        </article>
+                    {% endfor %}
                 {% endfor %}
-                </tbody>
-            </table>
+            </div>
         </div>
-    {% endfor %}
+    </section>
 {% endblock %}
+

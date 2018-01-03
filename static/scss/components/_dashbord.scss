@@ -15,6 +15,8 @@
 
 .dashbord__filter {
 
+  margin-top: 2rem;
+
   a,a:visited {
     color: $blue;
     text-decoration: none;
@@ -33,15 +35,20 @@
   }
 }
 
+.dashbord__content {
+  margin-top: 2rem;
+}
+
 .dashbord__project {
   background-color: white;
   border: 1px solid $blue;
   padding: 1rem;
-  width: 245px;
-  margin: 2rem 1.5rem 0 0;
+  width: 250px;
+  margin: 0 5px 2rem 0;
+  cursor: pointer;
 
   img {
-    width: 245px;
+    width: 250px;
     overflow: hidden;
   }
 
@@ -52,13 +59,33 @@
   i {
     margin-right: 0.5rem;
   }
+
+  a {
+    color: inherit;
+    text-decoration: inherit;
+  }
 }
 
-.dashbord__content {
-  @include flex;
-  flex-wrap: wrap;
+@include breakpoint(medium only) {
+  .dashbord__project {
+    width: 230px;
+  }
+}
 
-  .dashbord__project:last-of-type {
-    margin-right: 0;
+.dashbord__project--filter {
+  margin-right: 0;
+}
+
+.dashbord__project-image {
+  position: relative;
+
+  p {
+    position: absolute;
+    bottom: 10px;
+    background-color: $purple;
+    margin: 0;
+    padding: 0.3rem;
+    width: 80px;
+    border-radius: 0 1.5rem 1.5rem 0;
   }
 }
