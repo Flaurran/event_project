@@ -52,4 +52,8 @@
     background-color: $bc;
     padding: $padding;
     border-radius: $br;
+
+    @include breakpoint(xmedium down) {
+        margin: 0 0.5rem;
+    }
 }
