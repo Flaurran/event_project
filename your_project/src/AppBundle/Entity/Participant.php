@@ -9,11 +9,13 @@ class Participant implements AuthorEntityInterface
     const STATUS_INVITE = 0;
     const STATUS_ACCEPTED = 1;
     const STATUS_REFUSED = 2;
+    const STATUS_MAYBE = 3;
 
     static $statusLabel = [
         self::STATUS_INVITE => 'Invité (non répondu)',
         self::STATUS_ACCEPTED => 'Participe',
-        self::STATUS_REFUSED => 'Ne participe pas'
+        self::STATUS_REFUSED => 'Ne participe pas',
+        self::STATUS_MAYBE => 'Peut-être'
     ];
 
     /**
@@ -253,5 +255,13 @@ class Participant implements AuthorEntityInterface
     public function isAccepted()
     {
         return $this->status === self::STATUS_ACCEPTED;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isMaybe()
+    {
+        return $this->status === self::STATUS_MAYBE;
     }
 }

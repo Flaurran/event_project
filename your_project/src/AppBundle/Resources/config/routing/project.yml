@@ -31,7 +31,10 @@ project_participant_accepte:
   path: /participate/{slug}/accepte
   defaults: { _controller: 'AppBundle:ReadProject:choice', choice: 1 }
 
-
 project_participant_decline:
   path: /participate/{slug}/decline
-  defaults: { _controller: 'AppBundle:ReadProject:choice', choice: 0 }
+  defaults: { _controller: 'AppBundle:ReadProject:choice', choice: 2 }
+
+project_participant_maybe:
+  path: /participate/{slug}/maybe
+  defaults: { _controller: 'AppBundle:ReadProject:choice', choice: 3 }
