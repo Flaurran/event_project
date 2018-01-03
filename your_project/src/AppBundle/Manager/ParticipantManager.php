@@ -76,8 +76,18 @@ class ParticipantManager extends Manager
      */
     public function decline(Participant $participant)
     {
-        //TODO: Remove all option of participant
+        //TODO: [v2] Remove all option of participant
         return $this->setStatus($participant, Participant::STATUS_REFUSED);
+    }
+
+    /**
+     * @param Participant $participant
+     *
+     * @return Participant
+     */
+    public function maybe(Participant $participant)
+    {
+        return $this->setStatus($participant, Participant::STATUS_MAYBE);
     }
 
     /**

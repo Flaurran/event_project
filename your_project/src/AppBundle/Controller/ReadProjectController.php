@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Participant;
 use AppBundle\Entity\Project;
 use AppBundle\Exception\ParticipantNotFoundException;
 use AppBundle\Form\CommentType;
@@ -10,16 +11,11 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ReadProjectController extends ProjectController
 {
-    const CHOICE_DECLINE = 0;
-    const CHOICE_ACCEPT = 1;
-
     public function readAction(Request $request, $id)
     {
         /** @var Project $project */
         $project = $this->getProjectManager()->find($id);
 
-        //TODO: BAD, if 200 comments, load 200 entity with 200 requests
-        $this->getCommentManager()->calculate($project->getComments());
         return $this->render('@App/project/read.html.twig', [
             'project' => $project
         ]);
@@ -58,17 +54,20 @@ class ReadProjectController extends ProjectController
      */
     public function choiceAction (Request $request, $slug, $choice)
     {
-        if (! in_array($choice, [self::CHOICE_DECLINE, self::CHOICE_ACCEPT])) {
+        if (! in_array($choice, array_keys(Participant::$statusLabel))) {
             throw new \InvalidArgumentException('Not valid choice value');
         }
 
         $participant = $this->getParticipant($slug);
         switch ($choice) {
-            case self::CHOICE_DECLINE:
+            case Participant::STATUS_REFUSED:
                 $this->getParticipantManager()->decline($participant);
                 break;
-            case self::CHOICE_ACCEPT:
+            case Participant::STATUS_ACCEPTED:
                 $this->getParticipantManager()->accepte($participant);
+                break;
+            case Participant::STATUS_MAYBE:
+                $this->getParticipantManager()->maybe($participant);
                 break;
             default:
                 throw new \InvalidArgumentException('Choice value no more exist');
