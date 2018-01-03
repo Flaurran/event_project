@@ -118,4 +118,18 @@ class ParticipantManager extends Manager
         }
         return $participant;
     }
+
+    /**
+     * @param $slug
+     *
+     * @return \AppBundle\Entity\Participant|null
+     */
+    public function getParticipant($slug)
+    {
+        $participant = $this->findOneBySlug($slug);
+        if (! $participant) {
+            throw new ParticipantNotFoundException("Participant with @slug=$slug not found");
+        }
+        return $participant;
+    }
 }

@@ -4,10 +4,10 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Participant;
 use AppBundle\Entity\Project;
-use AppBundle\Exception\ParticipantNotFoundException;
 use AppBundle\Form\CommentType;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class ReadProjectController extends ProjectController
 {
@@ -77,16 +77,34 @@ class ReadProjectController extends ProjectController
     }
 
     /**
+     * @param Request $request
+     * @param         $slug
+     * @param         $commentId
+     *
+     * @return RedirectResponses
+     */
+    public function participantRemoveCommentAction (Request $request, $slug, $commentId)
+    {
+        $participant = $this->getParticipant($slug);
+        $comment = $this->getCommentManager()->findCommentById($commentId);
+
+        if (! $comment->authorIsParticipant() || $comment->getAuthor() != $participant->getId()) {
+            throw new AccessDeniedException('Cannot remove a comment write by another user');
+        }
+
+        $this->getCommentManager()->remove($comment);
+
+        return $this->redirectToRoute('project_participate', ['slug' => $participant->getSlug()]);
+    }
+
+    /**
      * @param $slug
      *
      * @return \AppBundle\Entity\Participant|null
+     * @deprecated use ParticipantManager::getParticipant($slug) instead
      */
     private function getParticipant($slug)
     {
-        $participant = $this->getParticipantManager()->findOneBySlug($slug);
-        if (! $participant) {
-            throw new ParticipantNotFoundException("Participant with @slug=$slug not found");
-        }
-        return $participant;
+        return $this->getParticipantManager()->getParticipant($slug);
     }
 }

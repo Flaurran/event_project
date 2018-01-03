@@ -8,9 +8,10 @@
             <div>
                 {# Not good, create own SessionService and register currentAuthenticateEntity where it is user or participant and use it #}
                 {% if canRemove or
-                    (app.user is not null and app.user.id == comment.author) or
-                    (participant is not null and comment.authorIsParticipant and comment.author == participant.id)%}
+                    (app.user is not null and app.user.id == comment.author) %}
                     <span><a href="{{ path('comment_remove', {'id': comment.id}) }}">x</a></span>
+                {% elseif (participant is not null and comment.authorIsParticipant and comment.author == participant.id) %}
+                        <span><a href="{{ path('project_participant_remove_comment', {'slug': participant.slug, 'commentId': comment.id}) }}">x</a></span>
                 {% endif %}
                 <span>[{{ comment.createdAt|date('d/m/Y H:i:s') }}] {{ comment.authorName }} : {{ comment.content|raw }}</span>
             </div>
