@@ -1,11 +1,9 @@
 .parameters {
   margin-top: 6rem;
-  height: 50%;
 }
 
 .parameters__wrapper {
   @include wrapper();
-  height: 100%;
 }
 
 .parameters__user {
@@ -22,14 +20,32 @@
 }
 
 .parameters__button {
-  @include button($bc: $blue, $color: white);
+  a {
+    @include button($bc: $blue, $color: white);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0.5rem;
+  }
+
+  a:first-of-type {
+    margin-left: 0;
+  }
+
+  @include breakpoint(small only) {
+    a {
+      margin-left: 0;
+    }
+  }
 }
 
 .parameters__informations {
+  height: 100%;
 }
 
 .parameters__avatar {
   img {
     height: 250px;
+    margin: 1rem 0;
   }
 }

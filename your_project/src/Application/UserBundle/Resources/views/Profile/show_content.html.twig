@@ -1,0 +1,26 @@
+<section class="parameters">
+    <div class="parameters__wrapper">
+        <div class="parameters__header">
+            <h1 class="parameters__title">Parametres du compte</h1>
+        </div>
+        <div class="parameters__user">
+            <div class="parameters__informations">
+                <p>Nom : {{ user.username }}</p>
+                <p>Email : {{ user.email }}</p>
+                {% if user.gender == 0 %}
+                    <p>Sexe : Homme</p>
+                {% else %}
+                    <p>Sexe : Femme</p>
+                {% endif %}
+                <div class="parameters__button">
+                    <a href="{{ path('fos_user_change_password') }}">Changer le mot de passe</a>
+                    <a href="{{ path('fos_user_profile_edit') }}">Editer le profil</a>
+                </div>
+
+            </div>
+        </div>
+        <div class="parameters__avatar">
+            <img src="{{ asset('assets/img/avatar.png') }}" alt="Avatar utilisateur">
+        </div>
+    </div>
+</section>

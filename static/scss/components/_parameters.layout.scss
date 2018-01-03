@@ -15,8 +15,34 @@
 
 .parameters__user {
   @include flex-grid-column(2 of 3);
+  @include flex;
 }
 
 .parameters__avatar {
   @include flex-grid-column(1 of 3);
+  @include flex;
+  @include flex-align(center,middle);
+}
+
+.parameters__button {
+  @include flex;
+
+  @include breakpoint(small only) {
+    flex-wrap: wrap;
+    @include flex-align(center,middle);
+
+    a {
+      flex: 1 0 100%;
+    }
+  }
+}
+
+@include breakpoint(small only) {
+  .parameters__user {
+    @include flex-grid-column(100%);
+  }
+
+  .parameters__avatar {
+    @include flex-grid-column(100%);
+  }
 }
