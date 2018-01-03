@@ -1,6 +1,6 @@
 .header {
   background-color: $beige;
-  margin-bottom: 6rem;
+  margin-bottom: 6.5rem;
   a, a:visited{
     color:$blue;
     text-decoration: none;
@@ -63,6 +63,7 @@
   position: absolute;
   border-top: 1px solid $blue;
   background-color: $beige;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   min-width: 160px;
   padding: 12px 16px;
   z-index: 1;
