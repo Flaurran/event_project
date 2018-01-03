@@ -1,31 +1,4 @@
 /**
- * Create a link hover with the good colors
- * @param $text-deco:     text-decoration:  none
- * @param $color:         color:            $celery
- * @param $text-deco-hov: text-decoration:  underline
- * @param $color-hov:     color:            $lima
- */
-@mixin link-hover(
-    $text-deco: none,
-    $color: $celery,
-    $text-deco-hov: underline,
-    $color-hov: $lima,
-    $color-visited: $celery) {
-
-    text-decoration: $text-deco;
-    color: $color;
-
-    &:hover {
-        text-decoration: $text-deco-hov;
-        color: $color-hov;
-    }
-
-    &:visited {
-        color: $color-visited;
-    }
-}
-
-/**
  * Remove bullets and margins, paddings from lists
  * @param $margin:      margin:              0
  * @param $padding:     padding:             0
