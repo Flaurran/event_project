@@ -2,8 +2,11 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\Participant;
 use AppBundle\Entity\Project;
 use AppBundle\Entity\User;
+use Doctrine\ORM\Query;
+use Doctrine\ORM\Query\Expr;
 
 /**
  * ProjectRepository
@@ -33,7 +36,19 @@ class ProjectRepository extends BaseRepository
      */
     public function findPrivateExcludeUser(User $excludeUser = null, $orderBy = [])
     {
-        return $this->findProjectByContextAndExcludeUserQuery(Project::CONTEXT_PRIVATE, $excludeUser, $orderBy)->getQuery()->getResult();
+        $alias = 'p';
+        $qb = $this->findProjectByContextAndExcludeUserQuery(Project::CONTEXT_PRIVATE, $excludeUser, $orderBy, $alias);
+
+        if (! $excludeUser->isAdmin()) {
+            $qb
+                ->join(Participant::class, 'par', Expr\Join::WITH,
+                    "$alias.id=par.project")
+                ->andWhere(
+                    $qb->expr()->eq('par.user', ':userParticipant')
+                )
+                ->setParameter('userParticipant', $excludeUser->getId());
+        }
+        return $qb->getQuery()->getResult();
     }
 
     /**

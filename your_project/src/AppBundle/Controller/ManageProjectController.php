@@ -106,6 +106,7 @@ class ManageProjectController extends ProjectController
 
     public function addParticipantAction(Request $request, $id)
     {
+        /** @var Project $project */
         $project = $this->getProjectManager()->find($id);
         //Check if exist on ProjectManageListener
 
@@ -115,6 +116,14 @@ class ManageProjectController extends ProjectController
             if ($form->isValid()) {
                 /** @var Participant $participant */
                 $participant = $form->getData();
+                $userByEmail = $this->getUserManager()->findOneByEmail($participant->getMail());
+                if ($project->getCreator()->getEmail() == $participant->getMail()) {
+                    $this->addFlash('error', 'Vous ne pouvez pas vous inviter en tant que participant si vous êtes le créateur...');
+                    return $this->redirectToRoute('project_add_participant', ['id' => $id]);
+                } else if (is_null($userByEmail) && is_null($participant->getFirstname())) {
+                    $this->addFlash('error', "L'email ne correspondant pas à un email d'utilisateur, le prénom est obligatoire");
+                    return $this->redirectToRoute('project_add_participant', ['id' => $id]);
+                }
                 $this->getParticipantManager()->create($participant, true, true, ['project' => $project]);
                 $this->addFlash('success', 'Participant ajouté avec succès');
                 return $this->redirectToRoute('project_manage', ['id' => $id]);

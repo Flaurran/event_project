@@ -4,9 +4,26 @@ namespace AppBundle\Manager;
 use AppBundle\Entity\Participant;
 use AppBundle\Entity\Project;
 use AppBundle\Exception\ParticipantNotFoundException;
+use Doctrine\Bundle\DoctrineBundle\Registry;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
 class ParticipantManager extends Manager
 {
+    /**
+     * @var UserManager
+     */
+    protected $userManager;
+
+    public function __construct(
+        Registry $doctrine,
+        TokenStorage $tokenStorage,
+        $className = null,
+        UserManager $userManager
+    ) {
+        parent::__construct($doctrine, $tokenStorage, $className);
+        $this->userManager = $userManager;
+    }
+
     /**
      * @param object|null   $entity
      * @param bool          $save
@@ -44,6 +61,11 @@ class ParticipantManager extends Manager
 
         $entity->setProject($project);
         $entity->setSlug(parent::random_str(64));
+        $user = $this->userManager->findOneByEmail($entity->getMail());
+        if ($user) {
+            $entity->setUser($user);
+        }
+
         $this->canBeSave($entity, $save, $flush);
 
         return $entity;

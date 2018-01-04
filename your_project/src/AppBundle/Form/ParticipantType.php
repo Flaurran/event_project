@@ -19,7 +19,7 @@ class ParticipantType extends AbstractType
                 'required' => true
             ])
             ->add('firstname', null, [
-                'required' => true
+                'required' => false
             ])
             ->add('lastname', null, [
                 'required' => false

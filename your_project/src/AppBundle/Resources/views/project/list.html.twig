@@ -1,7 +1,7 @@
 {% extends '@App/layout/layout.html.twig' %}
 
 {% block content %}
-    {% for title. projectList in projects %}
+    {% for title, projectList in projects %}
         <div>
             <h1>{{ title }}</h1>
             <table>
@@ -15,8 +15,16 @@
                 </thead>
                 <tbody>
                 {% for project in projectList %}
+                    {% set pathUrl = null %}
+                    {% if app.user == project.creator or app.user.isAdmin %}
+                        {% set pathUrl = path('project_manage', {'id': project.id }) %}
+                    {% elseif project.participantByUser(app.user) is not null %}
+                        {% set pathUrl = path('project_participate', {'slug': project.SlugParticipantByUser(app.user) }) %}
+                    {% else %}
+                        {% set pathUrl = path('project_read', {'id': project.id }) %}
+                    {% endif %}
                     <tr>
-                        <td><a href="{% if app.user == project.creator or app.user.isAdmin %}{{ path('project_manage', {'id': project.id }) }}{% else %}{{ path('project_read', {'id': project.id}) }}{% endif %}">{{ project.id }}</a></td>
+                        <td><a href="{{ pathUrl }}">{{ project.id }}</a></td>
                         <td>{{ project.title }}</td>
                         <td>{{ project.description }}</td>
                         <td>{{ project.date|date('d-m-Y H:i:s') }}</td>

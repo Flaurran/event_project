@@ -54,6 +54,13 @@ class Participant implements AuthorEntityInterface
     private $id;
 
     /**
+     * @var \AppBundle\Entity\User
+     */
+    private $user;
+
+
+
+    /**
      * Participant constructor.
      */
     public function __construct()
@@ -222,7 +229,7 @@ class Participant implements AuthorEntityInterface
      */
     public function getFullName()
     {
-        return sprintf('%s %s', $this->getFirstname(), $this->getLastname());
+        return $this->getUser() ? $this->getUser()->getAuthorName() : sprintf('%s %s', $this->getFirstname(), $this->getLastname());
     }
 
     /**
@@ -263,5 +270,29 @@ class Participant implements AuthorEntityInterface
     public function isMaybe()
     {
         return $this->status === self::STATUS_MAYBE;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\User $user
+     *
+     * @return Participant
+     */
+    public function setUser(\AppBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

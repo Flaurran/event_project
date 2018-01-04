@@ -342,7 +342,36 @@ class Project
     {
         return [
             'Privé' => self::CONTEXT_PRIVATE,
-            'Public' => self:: CONTEXT_PUBLIC
+            'Public' => self:: CONTEXT_PUBLIC,
         ];
+    }
+
+    /**
+     * @param User $user
+     *
+     * @return Participant|null
+     */
+    public function getParticipantByUser(User $user)
+    {
+        $returnParticipant = null;
+        /** @var Participant $participant */
+        foreach ($this->getParticipants() as $participant) {
+            if ($participant->getUser() && $participant->getUser()->getId() === $user->getId()) {
+                $returnParticipant = $participant;
+                break;
+            }
+        }
+        return $returnParticipant;
+    }
+
+    /**
+     * @param User $user
+     *
+     * @return null|string
+     */
+    public function getSlugParticipantByUser(User $user)
+    {
+        $participant = $this->getParticipantByUser($user);
+        return $participant ? $participant->getSlug() : null;
     }
 }
