@@ -18,11 +18,16 @@ class ProjectController extends BaseController
     public function indexAction(Request $request)
     {
         $projects = $this->getProjectManager()->findByUser($this->getUser());
-        $projectsTwig = [
-            'Mes projets' => $projects['mine'],
-            'Projets publics' => $projects['public'],
-            'Projets privés' => $projects['private']
-        ];
+
+        if ($projects['public'] || $projects['mine'] || $projects['private']) {
+            $projectsTwig = [
+                'Mes projets' => $projects['mine'],
+                'Projets publics' => $projects['public'],
+                'Projets privés' => $projects['private']
+            ];
+        } else {
+            $projectsTwig = [];
+        }
         return $this->render('@App/project/list.html.twig', [
             'projects' => $projectsTwig
         ]);
