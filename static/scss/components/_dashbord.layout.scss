@@ -15,7 +15,6 @@
 .dashbord__content {
   @include flex-grid-column(72%);
   @include flex;
-  @include flex-align(justify);
   flex-wrap: wrap;
 }
 
