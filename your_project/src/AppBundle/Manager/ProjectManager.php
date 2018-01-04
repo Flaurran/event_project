@@ -49,7 +49,7 @@ class ProjectManager extends Manager
     public function findByUser(User $user)
     {
         return [
-            'public' => $this->findPublic(),
+            'public' => $this->findPublic($user),
             'private' => $this->findPrivate($user),
             'mine' => $this->findProjectByCreator($user)
         ];
@@ -71,33 +71,39 @@ class ProjectManager extends Manager
         ], $orderBy);
     }
     /**
-     * @return array
-     */
-    public function findPublic()
-    {
-        $orderBy = [
-            'date' => 'DESC'
-        ];
-
-        return $this->findBy([
-            'context' => Project::CONTEXT_PUBLIC
-        ], $orderBy);
-    }
-
-    /**
-     * @param User $user
+     * @param User $excludeProjectUser
      *
      * @return array
      */
-    public function findPrivate(User $user)
+    public function findPublic(User $excludeProjectUser = null)
     {
         $orderBy = [
             'date' => 'DESC'
         ];
-        $by = [ 'context' => Project::CONTEXT_PRIVATE ];
-        if (! $user->isAdmin()) {
-            $by['creator'] = $user;
-        }
-        return $this->findBy($by, $orderBy);
+
+        return $this->getRepository()->findPublicExcludeUser($excludeProjectUser, $orderBy);
+    }
+
+    /**
+     * @param User $excludeProjectUser
+     *
+     * @return array
+     */
+    public function findPrivate(User $excludeProjectUser = null)
+    {
+        $orderBy = [
+            'date' => 'DESC'
+        ];
+
+        return $this->getRepository()->findPrivateExcludeUser($excludeProjectUser, $orderBy);
+    }
+
+    /**
+     * TODO: Just for autocompletion
+     * @return \AppBundle\Repository\ProjectRepository
+     */
+    public function getRepository()
+    {
+        return parent::getRepository();
     }
 }
