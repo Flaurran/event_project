@@ -19,8 +19,10 @@
                 <a href="{{ path('fos_user_registration_register') }}">S'inscrire</a>
                 <a href="{{ path('fos_user_security_login') }}">Connexion</a>
             {% else %}
-                <img src="{{ asset('assets/img/avatar.png') }}" alt="">
-                <a id="menu-dropdown">{{ app.user.username }}<i class="fa fa-caret-down" aria-hidden="true"></i>
+                <a id="menu-dropdown">
+                    <img src="{{ asset('assets/img/avatar.png') }}" alt="">
+                    {{ app.user.username }}
+                    <i class="fa fa-caret-down" aria-hidden="true"></i>
                 </a>
                 <ul class="header__dropdown">
                     <li><a href="{{ path('project_index') }}">Tableau de bord</a></li>
