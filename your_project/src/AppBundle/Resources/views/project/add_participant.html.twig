@@ -2,5 +2,8 @@
 
 {% block content %}
     <a href="{{ path('project_manage', {'id': app.request.get('id')}) }}">Retour</a>
+    <div class="help-text">
+        Il est uniquement nécessaire de remplir l'email si il correspond à celui d'un utilisateur. Sinon le prénom est également obligatoire.
+    </div>
     {{ form(form) }}
 {% endblock %}

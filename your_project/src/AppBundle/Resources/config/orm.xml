@@ -15,6 +15,7 @@
         </service>
         <service id="app.manager.participant" class="AppBundle\Manager\ParticipantManager" parent="app.manager.manager">
             <argument>AppBundle\Entity\Participant</argument>
+            <argument id="app.manager.user" type="service" />
         </service>
         <service id="app.manager.comment" class="AppBundle\Manager\CommentManager" parent="app.manager.manager">
             <argument>AppBundle\Entity\Comment</argument>

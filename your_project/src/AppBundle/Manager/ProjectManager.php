@@ -97,13 +97,4 @@ class ProjectManager extends Manager
 
         return $this->getRepository()->findPrivateExcludeUser($excludeProjectUser, $orderBy);
     }
-
-    /**
-     * TODO: Just for autocompletion
-     * @return \AppBundle\Repository\ProjectRepository
-     */
-    public function getRepository()
-    {
-        return parent::getRepository();
-    }
 }

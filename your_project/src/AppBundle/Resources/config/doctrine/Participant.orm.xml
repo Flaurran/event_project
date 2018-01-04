@@ -13,10 +13,11 @@
         </id>
         <field name="mail" type="string" />
 
-        <field name="firstname" type="string" />
+        <field name="firstname" type="string" nullable="true"/>
         <field name="lastname" type="string" nullable="true" />
         <field name="slug" type="string" />
         <field name="status" type="integer" />
-        <many-to-one target-entity="AppBundle\Entity\Project" field="project"/>
+        <many-to-one field="project" target-entity="AppBundle\Entity\Project" inversed-by="participants" />
+        <many-to-one target-entity="AppBundle\Entity\User" field="user" />
     </entity>
 </doctrine-mapping>

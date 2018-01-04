@@ -26,4 +26,12 @@ trait ApplicationAccessTrait
     {
         return $this->get('app.manager.comment');
     }
+
+    /**
+     * @return \AppBundle\Manager\UserManager
+     */
+    public function getUserManager()
+    {
+        return $this->get('app.manager.user');
+    }
 }
