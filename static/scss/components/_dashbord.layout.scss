@@ -4,9 +4,20 @@
   @include flex-grid-row();
 }
 
-.dashbord__title {
+.dashbord__header {
   @include flex-grid-column(100%);
+
+  h1 {
+    @include flex;
+    @include flex-align(left,middle);
+
+    @include breakpoint(small only) {
+      @include flex-direction(column);
+    }
+  }
 }
+
+
 
 .dashbord__filter {
   @include flex-grid-column(28%);

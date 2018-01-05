@@ -3,15 +3,15 @@
 {% block content %}
     <section class="dashbord">
         <div class="dashbord__wrapper">
-            <div class="dashbord__title">
-                <h1>Tableau de bord</h1>
+            <div class="dashbord__header">
+                <h1>Tableau de bord<a href="{{ path('project_create') }}">Créer un projet</a></h1>
             </div>
             <div class="dashbord__filter">
                 <article class="dashbord__project dashbord__project--filter">
                     <ul>
-                        <li><a href="">Tous les projets</a></li>
-                        <li><a href="">Mes projets</a></li>
-                        <li><a href="">Je participe</a></li>
+                        <li id="dash_all">Tous les projets</li>
+                        <li id="dash_mine">Mes projets</li>
+                        <li id="dash_going">Je participe</li>
                     </ul>
                     <img src="{{ asset('assets/img/datepicker.jpg') }}" alt="">
                 </article>
@@ -27,12 +27,18 @@
                         {% else %}
                             {% set pathUrl = path('project_read', {'id': project.id }) %}
                         {% endif %}
-                        <article class="dashbord__project">
+
+                        {#
+                            @Todo If app.user is in project.participant[] or isCreator
+                            Add class="project_going" to article
+                            (Je participe = Soit créateur soit j'ai été invité et j'ai validé)
+                        #}
+                        <article class="dashbord__project {% if app.user == project.creator %}my_project {% else %}a_project{% endif %} ">
                             <a href="{{ pathUrl }}">
                                 <div class="dashbord__project-image">
                                     <img src="{{ asset('assets/img/meeting.jpg') }}" alt="Image événement">
                                     {% if project.context == 0 %}
-                                        <p>Privée</p>
+                                        <p id="project_private">Privée</p>
                                     {% endif %}
                                     {#<a id="dashbord__project-link" href="">Voir</a>#}
                                 </div>
@@ -43,6 +49,11 @@
                             </a>
                         </article>
                     {% endfor %}
+                {% else %}
+                    <div class="dashbord__empty">
+                        <p>Il n'existe actuellement aucun projets :(</p>
+                        <a href="{{ path('project_create') }}">Créer un projet</a>
+                    </div>
                 {% endfor %}
             </div>
         </div>

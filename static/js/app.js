@@ -1,9 +1,26 @@
-document.addEventListener("DOMContentLoaded", function(event) {
-    document.querySelector("#menu-dropdown").onclick = function() {
-        if(document.querySelector(".header__connexion").classList.contains("header__activated")) {
-            document.querySelector(".header__connexion").classList.remove("header__activated");
-        } else {
-            document.querySelector(".header__connexion").classList.add("header__activated");
+$(document).ready(function() {
+
+    /* Navigation */
+    $("#menu-dropdown").click(function() {
+        $(".header__connexion").toggleClass('header__activated');
+    });
+
+    /* Dashbord */
+    $("#dash_all").click(function() {
+        $(".dashbord__project").removeClass("dashbord__project--hidden");
+    });
+
+    $("#dash_mine").click(function() {
+        var my_project = $(".a_project:not(.my_project)");
+        if(my_project.length > 0) {
+            my_project.addClass("dashbord__project--hidden");
         }
-    };
+    });
+
+    $("#dash_going").click(function() {
+        var project_going = $(".a_project:not(.project_going)");
+        if(project_going.length > 0) {
+            project_going.addClass("dashbord__project--hidden");
+        }
+    });
 });

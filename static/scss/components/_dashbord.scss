@@ -4,11 +4,24 @@
   @include wrapper();
 }
 
-.dashbord__title {
+.dashbord__header{
   h1 {
     border-bottom: 1px solid $blue;
     margin: 0;
     padding-bottom: 1rem;
+  }
+
+  a {
+    @include button($padding: 0.5rem 1rem, $bc:$blue, $color:white);
+    display: inline-block;
+    text-decoration: none;
+    margin-left: 1rem;
+    font-size: 1rem;
+    text-align: center;
+
+    @include breakpoint(small only) {
+      margin: 0;
+    }
   }
 }
 
@@ -43,12 +56,16 @@
   background-color: white;
   border: 1px solid $blue;
   padding: 1rem;
-  width: 250px;
-  margin: 0 5px 2rem 0;
+  width: 245px;
+  margin: 0 10px 2rem 0;
   cursor: pointer;
 
+  .my_project, .project_going {
+    display: none;
+  }
+
   img {
-    width: 250px;
+    width: 245px;
     overflow: hidden;
   }
 
@@ -64,6 +81,10 @@
     color: inherit;
     text-decoration: inherit;
   }
+
+  &--hidden {
+    display: none;
+  }
 }
 
 @include breakpoint(medium only) {
@@ -74,6 +95,11 @@
 
 .dashbord__project--filter {
   margin-right: 0;
+  cursor: default;
+
+  li {
+    cursor: pointer;
+  }
 }
 
 .dashbord__project-image {
@@ -87,5 +113,15 @@
     padding: 0.3rem;
     width: 80px;
     border-radius: 0 1.5rem 1.5rem 0;
+  }
+}
+
+.dashbord__empty {
+  width: 100%;
+
+  a {
+    @include button($bc:$blue, $color:white);
+    display: inline-block;
+    text-decoration: none;
   }
 }
