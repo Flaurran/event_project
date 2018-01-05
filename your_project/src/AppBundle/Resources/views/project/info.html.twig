@@ -1,68 +1,151 @@
 {% if project is defined %}
     {% set isCreator = readOnly is not defined and app.user is not null and (app.user.id == project.creator.id or app.user.hasRole('ROLE_ADMIN') ) %}
-    <div>
-        [Créé le {{ project.createdAt.format('d/m/Y H:i:s') }} par {{ project.creator.username }}]
-    </div>
-    <div>
-        <h1>
-        Titre :
-        {% if isCreator %}
-            <a href="#"
-               class="x-editable"
-               data-type="text"
-               data-pk="{{ project.id }}"
-               data-name="title"
-               data-value="{{ project.title }}"
-               data-url="{{ path('project_manage_update_ajax', {'id': project.id }) }}">
-        {% endif %}
-        {{ project.title }}
-        {% if isCreator %}</a>{% endif %}
-        </h1>
-    </div>
-    <div>
-        Date :
-        {% if isCreator %}
-        <a href="#"
-           class="x-editable"
-           data-type="date"
-           data-pk="{{ project.id }}"
-           data-name="date"
-           data-value="{{ project.date|date('d/m/Y H:i:s') }}"
-           data-url="{{ path('project_manage_update_ajax', {'id': project.id }) }}">
-            {% endif %}
-            {{ project.date|date('d/m/Y H:i:s') }}
-            {% if isCreator %}</a>{% endif %}
-    </div>
-    <div>
-        Description :
-        {% if isCreator %}
-        <a href="#"
-           class="x-editable"
-           data-type="text"
-           data-pk="{{ project.description }}"
-           data-name="description"
-           data-value="{{ project.description }}"
-           data-url="{{ path('project_manage_update_ajax', {'id': project.id }) }}">
-            {% endif %}
-            {{ project.description }}
-            {% if isCreator %}</a>{% endif %}
-    </div>
-    <div>
-        [Dernière modification {{ project.updatedAt|date('d/m/Y H:i:s') }}]
-    </div>
-    <div>
-        {% include '@App/project/participant_list.html.twig' with {'participants': project.participants} %}
-        {% if isCreator %}
-            <a href="{{ path('project_add_participant', {'id': project.id}) }}">Ajouter un participant</a>
-        {% endif %}
-    </div>
-    <div>
-        {% include '@App/project/comment.html.twig' with {'comments': project.comments, 'participant': participant is defined ? participant : null} %}
-    </div>
-    <div>
-        <h2>Options</h2>
-        TODO: Moyen de locomotion, location appart / hotel / hébergement, Nourriture / boisson etc...
-    </div>
+    <section class="project">
+        <div class="project__wrapper project__wrapper--header">
+            {# HEADER #}
+            <div class="project__header">
+                <img src="{{ asset('assets/img/meeting.jpg') }}" alt="Image de l'évènement">
+            </div>
+            <div class="project__participants">
+                <p class="project__nb-participants">
+                <span>{{ project.participants|length }}</span>participants</p>
+                {# TODO : ADD avatar of participants #}
+                <ul class="project__participants-avatar">
+                    {% for participant in project.participants %}
+                    <li><img src="{{ asset('assets/img/avatar.png') }}" alt=""></li>
+                    {% endfor %}
+                    <li>...</li>
+                </ul>
+                <div class="project__participation">
+                    <div></div>
+                </div>
+            </div>
+        </div>
+
+        {# BODY #}
+        <div class="project__wrapper">
+            <article class="project__content">
+                <div class="project__definition">
+                    <div class="project__info">
+                        <h2>
+                            {% if isCreator %}
+                            <a href="#"
+                               class="x-editable"
+                               data-type="text"
+                               data-pk="{{ project.id }}"
+                               data-name="title"
+                               data-value="{{ project.title }}"
+                               data-url="{{ path('project_manage_update_ajax', {'id': project.id }) }}">
+                                {% endif %}
+                                {{ project.title }}
+                                {% if isCreator %}
+                            </a>
+                            {% endif %}
+                        </h2>
+                        <p>Le
+                            {% if isCreator %}
+                            <a href="#"
+                               class="x-editable"
+                               data-type="date"
+                               data-pk="{{ project.id }}"
+                               data-name="date"
+                               data-value="{{ project.date|date('d/m/Y H:i:s') }}"
+                               data-url="{{ path('project_manage_update_ajax', {'id': project.id }) }}">
+                                {% endif %}
+                                {{ project.date|date('d/m/Y H:i:s') }}
+                                {% if isCreator %}
+                            </a>
+                            {% endif %}</p>
+                        <p>31400 Toulouse</p>
+                        <p>
+                            {% if isCreator %}
+                                <a href="#"
+                                class="x-editable"
+                                data-type="text"
+                                data-pk="{{ project.description }}"
+                                data-name="description"
+                                data-value="{{ project.description }}"
+                                data-url="{{ path('project_manage_update_ajax', {'id': project.id }) }}">
+                            {% endif %}
+                            {{ project.description }}
+                            {% if isCreator %}
+                                </a>
+                            {% endif %}
+                        </p>
+                    </div>
+                    <img src="{{ asset('assets/img/map.png') }}" alt="map du lieu de l'évènement">
+                </div>
+                <div class="project__upload-zone">
+                    <div class="project__upload">
+                        <img src="" alt="">
+                        <span>Nom fichier</span>
+                    </div>
+                    <div class="project__upload">
+                        <img src="" alt="">
+                        <span>Nom fichier</span>
+                    </div>
+                </div>
+                <div>
+                    {% include '@App/project/participant_list.html.twig' with {'participants': project.participants} %}
+                    {% if isCreator %}
+                        <a href="{{ path('project_add_participant', {'id': project.id}) }}">Ajouter un participant</a>
+                    {% endif %}
+                </div>
+            </article>
+            <aside class="project__comments">
+                {% include '@App/project/comment.html.twig' with {'comments': project.comments, 'participant': participant is defined ? participant : null} %}
+            </aside>
+        </div>
+    </section>
 {% else %}
     <div class="alert alert-danger">Error on this page, contact administrator</div>
 {% endif %}
+
+
+
+
+
+
+
+    {#<div>#}
+        {#[Créé le {{ project.createdAt.format('d/m/Y H:i:s') }} par {{ project.creator.username }}]#}
+    {#</div>#}
+    {#<div>#}
+        {#<h1>#}
+        {#Titre :#}
+
+        {#</h1>#}
+    {#</div>#}
+    {#<div>#}
+        {#Date :#}
+    {#</div>#}
+    {#<div>#}
+        {#Description :#}
+        {#{% if isCreator %}#}
+        {#<a href="#"#}
+           {#class="x-editable"#}
+           {#data-type="text"#}
+           {#data-pk="{{ project.description }}"#}
+           {#data-name="description"#}
+           {#data-value="{{ project.description }}"#}
+           {#data-url="{{ path('project_manage_update_ajax', {'id': project.id }) }}">#}
+            {#{% endif %}#}
+            {#{{ project.description }}#}
+            {#{% if isCreator %}</a>{% endif %}#}
+    {#</div>#}
+    {#<div>#}
+        {#[Dernière modification {{ project.updatedAt|date('d/m/Y H:i:s') }}]#}
+    {#</div>#}
+    {#<div>#}
+        {#{% include '@App/project/participant_list.html.twig' with {'participants': project.participants} %}#}
+        {#{% if isCreator %}#}
+            {#<a href="{{ path('project_add_participant', {'id': project.id}) }}">Ajouter un participant</a>#}
+        {#{% endif %}#}
+    {#</div>#}
+    {#<div>#}
+        {#{% include '@App/project/comment.html.twig' with {'comments': project.comments, 'participant': participant is defined ? participant : null} %}#}
+    {#</div>#}
+    {#<div>#}
+        {#<h2>Options</h2>#}
+        {#TODO: Moyen de locomotion, location appart / hotel / hébergement, Nourriture / boisson etc...#}
+    {#</div>#}

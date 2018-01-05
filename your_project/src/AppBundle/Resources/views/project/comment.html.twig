@@ -2,22 +2,37 @@
 {% set canRemove = readOnly is not defined and ((project is defined and project.creator == app.user) or is_granted('ROLE_ADMIN')) %}
 {% if comments is defined %}
     {% if comments|length == 0 %}
-        <div>Pas de commentaires</div>
+        {# Display nothing #}
     {% else %}
         {% for comment in comments %}
-            <div>
-                {# Not good, create own SessionService and register currentAuthenticateEntity where it is user or participant and use it #}
-                {% if canRemove or
-                    (app.user is not null and app.user.id == comment.author) %}
-                    <span><a href="{{ path('comment_remove', {'id': comment.id}) }}">x</a></span>
+            <div class="project__comment">
+                {% if canRemove or (app.user is not null and app.user.id == comment.author) %}
+                    <span><a href="{{ path('comment_remove', {'id': comment.id}) }}"><i class="fa fa-trash" aria-hidden="true"></i></a></span>
                 {% elseif (participant is not null and comment.authorIsParticipant and comment.author == participant.id) %}
-                        <span><a href="{{ path('project_participant_remove_comment', {'slug': participant.slug, 'commentId': comment.id}) }}">x</a></span>
+                    <span><a href="{{ path('project_participant_remove_comment', {'slug': participant.slug, 'commentId': comment.id}) }}">x</a></span>
                 {% endif %}
-                <span>[{{ comment.createdAt|date('d/m/Y H:i:s') }}] {{ comment.authorName }} : {{ comment.content|raw }}</span>
+                <img src="{{ asset('assets/img/avatar.png') }}" alt="Avatar">
+                <div class="comment">
+                    <p>{{ comment.authorName }}</p>
+                    <p>{{ comment.content|raw }}</p>
+                </div>
             </div>
         {% endfor %}
     {% endif %}
 {% endif %}
+
+{# @Todo : Make textarea expand with text#}
 {% if commentForm is defined %}
-    {{ form(commentForm) }}
+    <div class="project__comment">
+        <img src="{{ asset('assets/img/avatar.png') }}" alt="Avatar">
+        <div class="comment">
+            <p>Nom connecté</p>
+            {{ form(commentForm) }}
+        </div>
+    </div>
 {% endif %}
+
+{# OLD Comment #}
+{#<div>#}
+    {#<span>[{{ comment.createdAt|date('d/m/Y H:i:s') }}] {{ comment.authorName }} : {{ comment.content|raw }}</span>#}
+{#</div>#}

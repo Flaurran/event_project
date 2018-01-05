@@ -28,10 +28,25 @@
 
 .project__content {
   @include flex-grid-column(70%);
+
+  @include breakpoint(medium down) {
+    @include flex-grid-column(100%);
+  }
+}
+
+.project__definition {
+  @include flex;
+  @include breakpoint(small only) {
+    @include flex-direction(column);
+  }
 }
 
 .project__comments {
   @include flex-grid-column(30%);
+
+  @include breakpoint(medium down) {
+    @include flex-grid-column(100%);
+  }
 
   form {
     @include flex;
@@ -41,6 +56,11 @@
 
 .project__comment {
   @include flex;
+  @include flex-align(left, middle);
+
+  img {
+    @include flex-align-self(top);
+  }
 }
 
 .comment {
@@ -65,6 +85,10 @@
 
 .project__nb-participants {
   @include flex-grid-column(20%);
+
+  @include breakpoint(small only) {
+    @include flex-grid-column(40%);
+  }
 }
 
 .project__participants-avatar {
@@ -75,4 +99,14 @@
 
 .project__participation {
   @include flex-grid-column(20%);
+
+  @include breakpoint(small only) {
+    @include flex-grid-column(60%);
+  }
+}
+
+.dashbord__empty {
+  @include flex;
+  @include flex-direction(column);
+  @include flex-align(left, middle);
 }

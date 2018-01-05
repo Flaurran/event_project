@@ -1,5 +1,4 @@
-.project {
-}
+.project {}
 
 .project__wrapper {
   @include wrapper();
@@ -10,8 +9,35 @@
   padding-top: 0;
 }
 
+.project__content {
+  a, a:visited {
+    color: $blue;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+.project__definition {
+  margin-bottom: 2rem;
+}
+
+.project__info {
+  margin-right: 1rem;
+
+  h2 {
+    margin-top: 0;
+  }
+}
+
 .project__comments {
   border-left: 1px solid $blue;
+
+  .project__comment:last-of-type {
+    margin-left: 19px;
+  }
 
   img {
     width: 50px;
@@ -19,13 +45,39 @@
   }
 
   form {
+
+    label {
+      display: none;
+    }
+
     margin-left: 1rem;
+  }
+
+  @include breakpoint(medium down) {
+    border-left: none;
+
+    h2 {
+      border-top: 1px solid $blue;;
+    }
   }
 }
 
 .project__comment {
+  i {
+    color: $blue;
+    height: 22px;
+  }
+  span {
+    margin-right: 5px;
+  }
+
   p {
     margin: 0 0 0.5rem 1rem;
+  }
+
+  p:first-of-type {
+    font-weight: bold;
+    margin-bottom: 5px;
   }
 }
 
@@ -75,6 +127,12 @@
   }
 }
 
+.project__nb-participants {
+  span {
+    margin-right: 5px;
+  }
+}
+
 .project__participation {
   div {
     background-color: white;
@@ -88,8 +146,15 @@
   li {
     margin: 0 0.5rem;
   }
+
+  @include breakpoint(small only) {
+    display: none;
+  }
 }
 
 .project__participation {
   margin: 1rem 0 0;
 }
+
+
+
