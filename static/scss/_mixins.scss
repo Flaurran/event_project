@@ -21,19 +21,22 @@
  * @param $b-radius:    border-radius:       5px
  * @param $color:       color:               $purple
  * @param $fontW:       font-weight:         bold
+ * @param $cursor:      cursor:              pointer
  */
 @mixin button(
     $padding: 1rem 2.5rem,
     $bc: $beige,
     $b-radius: 5px,
     $color: $blue,
-    $fontW: bold) {
+    $fontW: bold,
+    $cursor: pointer) {
 
     padding: $padding;
     color: $color;
     background-color: $bc;
     border-radius: $b-radius;
     font-weight: $fontW;
+    cursor: $cursor;
 }
 /**
  * Wrapper
