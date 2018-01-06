@@ -10,6 +10,8 @@
                     <span><a href="{{ path('comment_remove', {'id': comment.id}) }}"><i class="fa fa-trash" aria-hidden="true"></i></a></span>
                 {% elseif (participant is not null and comment.authorIsParticipant and comment.author == participant.id) %}
                     <span><a href="{{ path('project_participant_remove_comment', {'slug': participant.slug, 'commentId': comment.id}) }}"><i class="fa fa-trash" aria-hidden="true"></i></a></span>
+                {% else %}
+                    <span class="comment-placeholder"></span>
                 {% endif %}
                 <img src="{{ asset('assets/img/avatar.png') }}" alt="Avatar">
                 <div class="comment">
@@ -21,12 +23,15 @@
     {% endif %}
 {% endif %}
 
-{# @Todo : Make textarea expand with text#}
 {% if commentForm is defined %}
     <div class="project__comment">
         <img src="{{ asset('assets/img/avatar.png') }}" alt="Avatar">
         <div class="comment">
-            <p>Nom connecté</p>
+            {% if app.user is not null %}
+                <p>{{ app.user.authorName }}</p>
+            {% else %}
+                <p>{{ participant.authorName }}</p>
+            {% endif %}
             {{ form(commentForm) }}
         </div>
     </div>

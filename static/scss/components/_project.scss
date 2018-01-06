@@ -90,9 +90,14 @@
   }
 }
 
+.comment-placeholder {
+  width: 14px;
+}
+
 .comment {
   button {
     @include button($bc: $blue, $color: white);
+    width: 100%;
   }
 }
 
