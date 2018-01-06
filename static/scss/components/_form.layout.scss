@@ -4,4 +4,28 @@
 
 .form__wrapper {
   @include flex-grid-row();
+  @include flex;
+  @include flex-align(center,middle);
+}
+
+.form__content {
+  @include flex-grid-column(50%);
+  @include flex-direction(column);
+
+  @include breakpoint(medium down) {
+    @include flex-grid-column(70%);
+  }
+
+  @include breakpoint(small down) {
+    @include flex-grid-column(95%);
+  }
+}
+
+
+
+
+.form__login {
+  @include flex;
+  @include flex-align(center, middle);
+  flex-wrap: wrap;
 }
