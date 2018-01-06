@@ -50,6 +50,15 @@
       display: none;
     }
 
+    textarea {
+      display: block;
+      box-sizing: padding-box;
+      overflow: hidden;
+      border-radius: 5px;
+      border: 0;
+      height: 50px;
+    }
+
     margin-left: 1rem;
   }
 

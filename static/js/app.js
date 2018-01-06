@@ -23,4 +23,11 @@ $(document).ready(function() {
             project_going.addClass("dashbord__project--hidden");
         }
     });
+
+    /* Project */
+    $(document).on('input', 'textarea', function () {
+        $(this).outerHeight(38).outerHeight(this.scrollHeight);
+    });
+
 });
+
