@@ -4,7 +4,7 @@
     <div>Participant actuel : {{ participant.fullName }}</div>
     {% include '@App/project/info.html.twig' %}
     <div>Statut : {{ participant.statusLabel }}</div>
-    {% if participant.accepted == false %}<a href="{{ path('project_participant_accepte', {'slug': app.request.get('slug')}) }}">{% endif %}Participer{% if participant.accepted == false %}</a>{% endif %}
-    {% if participant.refused == false %}<a href="{{ path('project_participant_decline', {'slug': app.request.get('slug')}) }}">{% endif %}Ne plus participer{% if participant.accepted == false %}</a>{% endif %}
-    {% if participant.maybe == false %}<a href="{{ path('project_participant_maybe', {'slug': app.request.get('slug')}) }}">{% endif %}Indécis{% if participant.accepted == false %}</a>{% endif %}
+    {% if participant.accepted == false %}<a href="{{ path('project_participant_accepte', {'slug': app.request.get('slug')}) }}">{% endif %}<i class="fa fa-check" aria-hidden="true"></i>{% if participant.accepted == false %}</a>{% endif %}
+    {% if participant.refused == false %}<a href="{{ path('project_participant_decline', {'slug': app.request.get('slug')}) }}">{% endif %}<i class="fa fa-times" aria-hidden="true"></i>{% if participant.accepted == false %}</a>{% endif %}
+    {% if participant.maybe == false %}<a href="{{ path('project_participant_maybe', {'slug': app.request.get('slug')}) }}">{% endif %}<i class="fa fa-question" aria-hidden="true"></i>{% if participant.accepted == false %}</a>{% endif %}
 {% endblock %}
