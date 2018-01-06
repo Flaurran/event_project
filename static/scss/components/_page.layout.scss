@@ -1,0 +1,9 @@
+.page {}
+
+.page__wrapper {
+  @include flex-grid-row;
+}
+
+.page__content {
+  @include flex-grid-column(100%)
+}

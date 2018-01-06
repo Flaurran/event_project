@@ -14,4 +14,14 @@ class DefaultController extends Controller
                 .DIRECTORY_SEPARATOR,
         ]);
     }
+
+    public function aboutAction(Request $request)
+    {
+        return $this->render('AppBundle:default:about.html.twig');
+    }
+
+    public function contactAction(Request $request)
+    {
+        return $this->render('AppBundle:default:contact.html.twig');
+    }
 }
