@@ -2,10 +2,37 @@
 
 {% block content %}
     <section class="form__wrapper">
-        <div class="form__content">
+        <div class="form__content form__content--create">
             {{ form_start(form) }}
-            {{ form_widget(form) }}
+            {{ form_label(form.title) }}
+            {{ form_errors(form.title) }}
+            {{ form_widget(form.title) }}
+
+            {{ form_label(form.date) }}
+            {{ form_errors(form.date) }}
+            <div class='input-group date' id='datetimepicker2'>
+                {{ form_widget(form.date) }}
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+            {{ form_label(form.description) }}
+            {{ form_errors(form.description) }}
+            {{ form_widget(form.description) }}
+
+            {{ form_label(form.context) }}
+            {{ form_errors(form.context) }}
+            {{ form_widget(form.context) }}
+
+            {{ form_widget(form.submit) }}
             {{ form_end(form) }}
         </div>
     </section>
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker2').datetimepicker({
+                locale: 'fr'
+            });
+        });
+    </script>
 {% endblock %}

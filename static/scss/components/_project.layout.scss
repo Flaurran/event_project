@@ -39,6 +39,7 @@
   @include breakpoint(small only) {
     @include flex-direction(column);
   }
+  @include flex-align(justify);
 }
 
 .project__comments {

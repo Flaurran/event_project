@@ -78,7 +78,13 @@
   min-width: 160px;
   padding: 12px 16px;
   z-index: 1;
-  top: 34px;
+  top: 50px;
+  right: 20px;
+
+
+  @include breakpoint(small down) {
+    right: 0;
+  }
 }
 
 .header__activated {

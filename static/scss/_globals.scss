@@ -34,3 +34,14 @@ h1, h2, h3, h4 {
 p, ul, li, span, div {
   font-family: $font-secondary;
 }
+
+p {
+  font-size: 17px;
+  margin: 24px 0;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+  font-weight: bold;
+}

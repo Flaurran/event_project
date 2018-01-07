@@ -26,3 +26,12 @@
   @include flex-align(center, middle);
   flex-wrap: wrap;
 }
+
+.form__content--create {
+
+  .input-group-addon {
+    @include flex;
+    @include flex-align(center, middle);
+  }
+}
+
