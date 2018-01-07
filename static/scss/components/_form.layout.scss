@@ -21,10 +21,7 @@
   }
 }
 
-
-
-
-.form__login {
+.form__submit {
   @include flex;
   @include flex-align(center, middle);
   flex-wrap: wrap;
