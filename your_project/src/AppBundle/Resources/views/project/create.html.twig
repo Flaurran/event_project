@@ -23,8 +23,9 @@
             {{ form_label(form.context) }}
             {{ form_errors(form.context) }}
             {{ form_widget(form.context) }}
-
-            {{ form_widget(form.submit) }}
+            <div class="form__submit">
+                {{ form_widget(form.submit) }}
+            </div>
             {{ form_end(form) }}
         </div>
     </section>
