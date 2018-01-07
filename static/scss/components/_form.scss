@@ -20,6 +20,16 @@
     margin-top: 0;
     border-bottom: 1px solid $blue;
   }
+
+  p {
+    text-align: center;
+  }
+  a {
+    @include button($bc: $blue, $color: white);
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+  }
 }
 
 .form__submit {
