@@ -1,0 +1,33 @@
+.message {}
+
+.message__wrapper {
+  margin-bottom: 1.5rem;
+}
+
+.message__content {
+  background-color: $blue;
+  text-align: center;
+  border-radius: 5px;
+  padding: 1rem;
+  position: relative;
+}
+
+.message--succes {
+  color: white;
+}
+
+.message--error {
+  color: darkred;
+}
+
+.message__close {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  color: white;
+  cursor: pointer;
+}
+
+.message__closed {
+  display: none;
+}

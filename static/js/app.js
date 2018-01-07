@@ -29,5 +29,9 @@ $(document).ready(function() {
         $(this).outerHeight(38).outerHeight(this.scrollHeight);
     });
 
+    $(".message__close").click(function() {
+        $(".message__wrapper").toggleClass('message__closed');
+    });
+
 });
 

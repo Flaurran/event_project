@@ -1,7 +1,17 @@
 {% for message in app.session.flashBag.get('success') %}
-    <div class="alert alert-success">{{ message }}</div>
+<section class="message__wrapper">
+    <div class="message__content">
+        <a class="message__close"><i class="fa fa-times" aria-hidden="true"></i></a>
+        <p class="message--succes">{{ message }}</p>
+    </div>
+</section>
 {% endfor %}
 
 {% for message in app.session.flashBag.get('error') %}
-    <div class="alert alert-error">{{ message }}</div>
+    <section class="message__wrapper">
+        <div class="message__content">
+            <a class="message__close"><i class="fa fa-times" aria-hidden="true"></i></a>
+            <p class="message--error">{{ message }}</p>
+        </div>
+    </section>
 {% endfor %}

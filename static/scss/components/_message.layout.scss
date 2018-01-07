@@ -1,0 +1,11 @@
+.message {}
+
+.message__wrapper {
+  @include flex-grid-row();
+}
+
+.message__content {
+  @include flex-grid-column(100%);
+  @include flex;
+  @include flex-align(center,middle);
+}
