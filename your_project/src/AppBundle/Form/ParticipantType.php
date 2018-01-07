@@ -16,13 +16,16 @@ class ParticipantType extends AbstractType
     {
         $builder
             ->add('mail', EmailType::class, [
-                'required' => true
+                'required' => true,
+                'label' => 'Email'
             ])
             ->add('firstname', null, [
-                'required' => false
+                'required' => false,
+                'label' => 'Prénom'
             ])
             ->add('lastname', null, [
-                'required' => false
+                'required' => false,
+                'label' => 'Nom'
             ])
             ->add('submit', SubmitType::class, [])
         ;
