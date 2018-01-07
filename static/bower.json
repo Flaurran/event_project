@@ -12,7 +12,8 @@
     "foundation-sites": "~6.3.0",
     "motion-ui": "~1.2.2",
     "components-font-awesome": "^4.7.0",
-    "eonasdan-bootstrap-datetimepicker": "^4.17.47"
+    "eonasdan-bootstrap-datetimepicker": "^4.17.47",
+    "bootstrap": "^3.3.7"
   },
   "ignore": [
     "**/.*",
