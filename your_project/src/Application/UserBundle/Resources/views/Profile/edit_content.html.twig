@@ -1,0 +1,12 @@
+{% trans_default_domain 'FOSUserBundle' %}
+<section class="form__wrapper">
+    <div class="form__content">
+        {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+        {{ form_widget(form) }}
+        <div class="form__submit">
+            <button type="submit">{{ 'profile.edit.submit'|trans }}</button>
+        </div>
+        {{ form_end(form) }}
+    </div>
+</section>
+
