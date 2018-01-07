@@ -41,3 +41,11 @@
     }
   }
 }
+
+.form__submit--request {
+  button {
+    @include breakpoint(small only) {
+      width: 100%;
+    }
+  }
+}
