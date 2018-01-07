@@ -8,7 +8,6 @@
 }
 
 .header__menu {
-
   color: white;
   height: 50px;
 }
@@ -19,6 +18,10 @@
   height:100%;
   img {
     height: 115px;
+
+    @include breakpoint(small only) {
+      height: auto;
+    }
   }
 }
 
@@ -31,6 +34,10 @@
   li:not(:last-of-type) {
     margin-right: 1rem;
   }
+
+  @include breakpoint(small only) {
+    display: none;
+  }
 }
 
 .header__connexion {
@@ -38,6 +45,10 @@
 
   a:first-of-type {
     margin-right: 1rem;
+
+    @include breakpoint(small only) {
+      margin-right: 0;
+    }
   }
 }
 

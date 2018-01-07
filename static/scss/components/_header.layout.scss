@@ -6,17 +6,24 @@
 
 .header__logo {
   @include flex-grid-column(1 of 3);
+
+  @include breakpoint(small only) {
+    @include flex-grid-column(40%);
+  }
 }
 
 .header__social {
   @include flex-grid-column(1 of 3);
   @include flex;
   @include flex-align(right, middle);
-
 }
 
 .header__connexion {
   @include flex-grid-column(1 of 3);
   @include flex;
   @include flex-align(right, middle);
+
+  @include breakpoint(small only) {
+    @include flex-grid-column(60%);
+  }
 }
