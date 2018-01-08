@@ -9,9 +9,9 @@
             <div class="dashbord__filter">
                 <article class="dashbord__project dashbord__project--filter">
                     <ul>
-                        <li id="dash_all">Tous les projets</li>
-                        <li id="dash_mine">Mes projets</li>
-                        <li id="dash_going">Je participe</li>
+                        <li class="dash_project_filter" data-target="">Tous les projets</li>
+                        <li class="dash_project_filter" data-target="my_project">Mes projets</li>
+                        <li class="dash_project_filter" data-target="project_going">Je participe</li>
                     </ul>
                     <img src="{{ asset('assets/img/datepicker.jpg') }}" alt="">
                 </article>
@@ -33,7 +33,8 @@
                             Add class="project_going" to article
                             (Je participe = Soit créateur soit j'ai été invité et j'ai validé)
                         #}
-                        <article class="dashbord__project {% if app.user == project.creator %}my_project {% else %}a_project{% endif %} ">
+                        <article class="a_project dashbord__project {% if app.user and app.user == project.creator %}my_project{% elseif app.user and project.participantByUser(app.user) %}project_going{% else %}a_project
+                            {% endif %}">
                             <a href="{{ pathUrl }}">
                                 <div class="dashbord__project-image">
                                     <img src="{{ asset('assets/img/meeting.jpg') }}" alt="Image événement">

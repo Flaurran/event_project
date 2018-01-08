@@ -16,24 +16,25 @@ $(document).ready(function() {
         $(".header__connexion").toggleClass('header__activated');
     });
 
-    /* Dashbord */
-    $("#dash_all").click(function() {
-        $(".dashbord__project").removeClass("dashbord__project--hidden");
+    $('.dash_project_filter').on('click', function(e) {
+        var hiddenClassName = 'dashbord__project--hidden';
+        var className = $(e.currentTarget).data('target');
+        if (className === '') {
+            $(".a_project").removeClass(hiddenClassName);
+        } else {
+            showProject('.' + className, hiddenClassName);
+        }
     });
-
-    $("#dash_mine").click(function() {
-        var my_project = $(".a_project:not(.my_project)");
+    var showProject = function(className, hiddenClassName) {
+        if (hiddenClassName === undefined) {
+            hiddenClassName = 'dashbord__project--hidden';
+        }
+        var my_project = $(".a_project:not(" + className + ")");
         if(my_project.length > 0) {
-            my_project.addClass("dashbord__project--hidden");
+            my_project.addClass(hiddenClassName);
         }
-    });
-
-    $("#dash_going").click(function() {
-        var project_going = $(".a_project:not(.project_going)");
-        if(project_going.length > 0) {
-            project_going.addClass("dashbord__project--hidden");
-        }
-    });
+        $(className).removeClass(hiddenClassName);
+    };
 
     /* Project */
     $(document).on('input', 'textarea', function () {
