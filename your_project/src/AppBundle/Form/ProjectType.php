@@ -26,6 +26,9 @@ class ProjectType extends AbstractType
             ])
             ->add('date', DateTimeType::class, [
                 'widget' => 'single_text',
+                'format' => 'dd/MM/yyyy HH:mm',
+                'model_timezone' => 'Europe/Paris',
+                'view_timezone' => 'Europe/Paris',
                 'attr' => ['class' => 'form-control']
             ] )
             ->add('description', TextareaType::class)
