@@ -10,6 +10,10 @@ project_manage:
   path: /manage/{id}
   defaults: { _controller: 'AppBundle:ManageProject:manage' }
 
+project_remove:
+  path: /remove/{id}
+  defaults: { _controller: 'AppBundle:ManageProject:remove' }
+
 project_manage_update_ajax:
   path: /manage/{id}/update-xhr
   defaults: { _controller: 'AppBundle:ManageProject:updateAjax' }

@@ -134,4 +134,22 @@ class ManageProjectController extends ProjectController
             'form' => $form->createView()
         ]);
     }
+
+    /**
+     * @param Request $request
+     * @param         $id
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function removeAction(Request $request, $id)
+    {
+        /** @var Project $project */
+        $project = $this->getProjectManager()->find($id);
+
+        $this->getProjectManager()->remove($project);
+
+        $this->addFlash('success','Projet supprimé avec succès !');
+
+        return $this->redirectToRoute('project_index');
+    }
 }

@@ -1,5 +1,16 @@
 $(document).ready(function() {
-
+    /* Confirm deletion */
+    $('.modalclickevent').on('click', function(e) {
+        var message = $(e.currentTarget).data('message');
+        if (message === undefined) {
+            console.log('modalclickevent is set on element but no data-message found');
+            e.preventDefault();
+        } else {
+            if (confirm(message) !== true) {
+                e.preventDefault();
+            }
+        }
+    });
     /* Navigation */
     $("#menu-dropdown").click(function() {
         $(".header__connexion").toggleClass('header__activated');

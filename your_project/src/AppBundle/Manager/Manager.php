@@ -123,7 +123,8 @@ abstract class Manager
             $className = is_object($entity) ? get_class($entity) : 'None object';
             throw new \LogicException("Cannot remove an other object than {$this->className} . \"$className\" given");
         }
-        return $this->getRepository()->remove($entity);
+        $this->getManager()->remove($entity);
+        $this->getManager()->flush();
     }
 
     /**
@@ -154,6 +155,14 @@ abstract class Manager
     protected function getRepository()
     {
         return $this->doctrine->getRepository($this->className);
+    }
+
+    /**
+     * @return \Doctrine\Common\Persistence\ObjectManager|object
+     */
+    protected function getManager()
+    {
+        return $this->doctrine->getManager();
     }
     /**
      * Generate a random string, using a cryptographically secure

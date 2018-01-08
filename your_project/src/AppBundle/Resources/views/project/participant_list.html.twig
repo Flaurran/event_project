@@ -5,7 +5,8 @@
     </li>
     {% for participant in participants %}
         <li>
-            {% if isCreator is defined and isCreator %}<a href="{{ path('participant_remove', {'id': participant.id}) }}">x</a> {% endif %}
+            {% if isCreator is defined and isCreator %}<a href="{{ path('participant_remove', {'id': participant.id}) }}" class="modalclickevent"
+                                                          data-message="Êtes-vous sûr de vouloir expulser le participant {{ participant.fullName }} ?">x</a> {% endif %}
             [{{ participant.statusLabel }}] {{ participant.fullName }}
         </li>
     {% else %}

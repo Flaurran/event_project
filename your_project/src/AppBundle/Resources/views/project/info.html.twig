@@ -1,5 +1,8 @@
 {% if project is defined %}
     {% set isCreator = readOnly is not defined and app.user is not null and (app.user.id == project.creator.id or app.user.hasRole('ROLE_ADMIN') ) %}
+    {% if isCreator %}
+        <a href="{{ path('project_remove', {'id': project.id }) }}" class="modalclickevent" data-message="Êtes-vous sûr de vouloir supprimer le projet {{ project.title }} ?">Supprimer</a>
+    {% endif %}
     <section class="project">
         <div class="project__wrapper project__wrapper--header">
             {# HEADER #}

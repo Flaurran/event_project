@@ -16,6 +16,7 @@
         <field name="authorName" type="string" />
         <field name="authorType" type="integer" />
 
-        <many-to-one target-entity="AppBundle\Entity\Project" field="project" inversed-by="comments"/>
+        <many-to-one target-entity="AppBundle\Entity\Project" field="project" inversed-by="comments">
+        </many-to-one>
     </entity>
 </doctrine-mapping>

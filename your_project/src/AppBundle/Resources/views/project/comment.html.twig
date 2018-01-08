@@ -7,7 +7,7 @@
         {% for comment in comments %}
             <div class="project__comment">
                 {% if canRemove or (app.user is not null and app.user.id == comment.author) %}
-                    <span><a href="{{ path('comment_remove', {'id': comment.id}) }}"><i class="fa fa-trash" aria-hidden="true"></i></a></span>
+                    <span><a href="{{ path('comment_remove', {'id': comment.id}) }}" class="modalclickevent" data-message="Êtes-vous sûr de vouloir supprimer ce commentaire ?"><i class="fa fa-trash" aria-hidden="true"></i></a></span>
                 {% elseif (participant is not null and comment.authorIsParticipant and comment.author == participant.id) %}
                     <span><a href="{{ path('project_participant_remove_comment', {'slug': participant.slug, 'commentId': comment.id}) }}"><i class="fa fa-trash" aria-hidden="true"></i></a></span>
                 {% else %}
