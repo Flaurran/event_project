@@ -59,7 +59,20 @@
                                 {% if isCreator %}
                             </a>
                             {% endif %}</p>
-                        <p>31400 Toulouse</p>
+                        <p>
+                            {% if isCreator %}
+                            <a href="#"
+                               class="x-editable"
+                               data-type="text"
+                               data-pk="{{ project.id }}"
+                               data-name="place"
+                               data-value="{{ project.place }}"
+                               data-url="{{ path('project_manage_update_ajax', {'id': project.id }) }}">
+                                {% endif %}
+                                {{ project.place }}
+                                {% if isCreator %}
+                            </a>
+                            {% endif %}</p>
                         <p>
                             {% if isCreator %}
                                 <a href="#"

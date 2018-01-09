@@ -31,6 +31,9 @@ class ProjectType extends AbstractType
                 'view_timezone' => 'Europe/Paris',
                 'attr' => ['class' => 'form-control']
             ] )
+            ->add('place', TextType::class, [
+                'label' => 'Lieu'
+            ])
             ->add('description', TextareaType::class)
             ->add('context', ChoiceType::class, [
                 'choices' => Project::getAllContexts(),

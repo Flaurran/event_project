@@ -16,6 +16,11 @@
                     <span class="glyphicon glyphicon-calendar"></span>
                 </span>
             </div>
+
+            {{ form_label(form.place) }}
+            {{ form_errors(form.place) }}
+            {{ form_widget(form.place) }}
+
             {{ form_label(form.description) }}
             {{ form_errors(form.description) }}
             {{ form_widget(form.description) }}

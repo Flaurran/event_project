@@ -67,6 +67,11 @@ class Project
      */
     private $context;
 
+    /**
+     * @var string
+     */
+    private $place;
+
 
     public function __construct()
     {
@@ -373,5 +378,29 @@ class Project
     {
         $participant = $this->getParticipantByUser($user);
         return $participant ? $participant->getSlug() : null;
+    }
+
+    /**
+     * Set place
+     *
+     * @param string $place
+     *
+     * @return Project
+     */
+    public function setPlace($place)
+    {
+        $this->place = $place;
+
+        return $this;
+    }
+
+    /**
+     * Get place
+     *
+     * @return string
+     */
+    public function getPlace()
+    {
+        return $this->place;
     }
 }
