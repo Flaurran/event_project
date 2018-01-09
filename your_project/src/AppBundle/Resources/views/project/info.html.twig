@@ -33,10 +33,11 @@
                         <h2>
                             {% if isCreator %}
                             <a href="#"
-                               class="x-editable"
+                               class="editable editable-click"
                                data-type="text"
                                data-pk="{{ project.id }}"
-                               data-name="title"
+                               data-title="title"
+                               data-original-title title
                                data-value="{{ project.title }}"
                                data-url="{{ path('project_manage_update_ajax', {'id': project.id }) }}">
                                 {% endif %}
