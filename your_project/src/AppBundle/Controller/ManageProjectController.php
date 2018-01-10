@@ -73,7 +73,8 @@ class ManageProjectController extends ProjectController
             return new JsonResponse('Error occurred. ' . $e->getMessage());
         }
         return new JsonResponse([
-            'url' => $this->generateUrl('project_manage', ['id' => $id])
+            'message' => 'Le projet a été mis à jour !',
+            'type' => 'success'
         ]);
     }
 

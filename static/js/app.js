@@ -45,5 +45,22 @@ $(document).ready(function() {
         $(".message__wrapper").toggleClass('message__closed');
     });
 
+    $('.x-editable').editable({
+        success: function(rep) {
+            var messageTmp = $('.message--tmp');
+            if (messageTmp.length === 0) {
+                return;
+            }
+            messageTmp.addClass('message--' + rep['type']);
+            messageTmp.text(rep['message']);
+            $(messageTmp[0]).parent().parent().show();
+            setTimeout(function () {
+                messageTmp.removeClass('message--' + rep['type']);
+                messageTmp.text('');
+                $(messageTmp[0]).parent().parent().hide();
+            }, 3000);
+        }
+    });
+
 });
 
