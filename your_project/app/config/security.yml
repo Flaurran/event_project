@@ -28,7 +28,7 @@ security:
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/project/participate/, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/project/, role: ROLE_USER }
-        - { path: ^/, role: ROLE_USER }
+        - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY }
 
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
