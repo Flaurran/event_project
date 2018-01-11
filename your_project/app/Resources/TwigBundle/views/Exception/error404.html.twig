@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<section class="error__wrapper">
+    <div class="error__content">
+        <h1>Oops! Une erreur est arrivée</h1>
+        <h2>Le serveur renvoie : "{{ status_code }} - {{ status_text }}".</h2>
+        <div>
+            Faites nous savoir vos différentes actions lorsque cette erreur est arrivée.
+            Nous fixerons cela le plus vite possible. Désolé pour l'inconvenance.
+        </div>
+    </div>
+</section>
+{% endblock %}
