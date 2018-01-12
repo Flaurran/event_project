@@ -1,11 +1,3 @@
-parameters:
-    database_host: 127.0.0.1
-    database_port: null
-    database_name: your-project
-    database_user: yourproject
-    database_password: yourproject
-    mailer_transport: smtp
-    mailer_host: 127.0.0.5
-    mailer_user: resettingservice@gmail.com
-    mailer_password: null
+parameters:http://www.event_project.dev/
     secret: ThisTokenIsNotSoSecretChangeIt
+    mailer_sender_email: resettingservice@gmail.com
