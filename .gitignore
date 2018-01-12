@@ -12,6 +12,9 @@
 */app/config/parameters.yml
 */app/config/parameters.ini
 
+# Docker
+docker/.env
+
 # Managed by Composer
 */app/bootstrap.php.cache
 */var/bootstrap.php.cache

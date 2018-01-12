@@ -1,0 +1,96 @@
+version: '2'
+
+services:
+
+  symfony_data:
+    container_name: ${COMPOSE_PROJECT_NAME}_symfony_data
+    image: busybox
+    volumes:
+      - ./mount/apps/symfony:${APPS_DIR}/symfony
+
+  static_data:
+    container_name: ${COMPOSE_PROJECT_NAME}_static_data
+    image: busybox
+    volumes:
+      - ./mount/apps/static:${APPS_DIR}/static
+
+  mysql_data:
+    container_name: ${COMPOSE_PROJECT_NAME}_mysql_data
+    image: busybox
+    volumes:
+      - ./mount/mysql/data:/var/lib/mysql
+
+  mysql:
+   container_name: ${COMPOSE_PROJECT_NAME}_mysql
+   build: ./build/mysql/
+   image: ${COMPOSE_PROJECT_NAME}/mysql
+   environment:
+     MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+     MYSQL_USER: ${MYSQL_USER}
+     MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+     MYSQL_DATABASE: ${MYSQL_DATABASE}
+   volumes_from:
+     - mysql_data
+   volumes:
+     - ./mount/logs/db/:/mnt/logs/
+     - ./config/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+
+  php:
+    container_name: ${COMPOSE_PROJECT_NAME}_php
+    build: ./build/php_dev/
+    image: ${COMPOSE_PROJECT_NAME}/php
+    volumes_from:
+      - symfony_data
+    volumes:
+      - ./config/php/zzz-custom.conf:/usr/local/etc/php-fpm.d/zzz-custom.conf
+      - ./mount/logs/php/:/mnt/logs/
+    links:
+      - mysql
+    environment:
+      DB_HOSTNAME: ${MYSQL_HOSTNAME}
+      DB_PORT: ${MYSQL_PORT}
+      DB_NAME: ${MYSQL_DATABASE}
+      DB_USER: ${MYSQL_USER}
+      DB_PASSWORD: ${MYSQL_PASSWORD}
+      SMTP_HOST: ${SMTP_HOST}
+      SMTP_PORT: ${SMTP_PORT}
+      SMTP_USER: ${SMTP_USER}
+      SMTP_PASSWORD: ${SMTP_PASSWORD}
+      SMTP_ENCRYPTION: ${SMTP_ENCRYPTION}
+
+  web:
+    container_name: ${COMPOSE_PROJECT_NAME}_web
+    build: ./build/nginx
+    image: ${COMPOSE_PROJECT_NAME}/nginx
+    volumes:
+      - ./config/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./config/nginx/symfony.conf:/etc/nginx/conf.d/symfony.conf
+      - ./mount/logs/web/:/mnt/logs/
+    volumes_from:
+      - symfony_data
+      - static_data
+    links:
+      - php
+    environment:
+      DOMAIN_NAME: www.${COMPOSE_PROJECT_NAME}.dev
+    ports:
+      - 80
+
+  mailhog:
+    container_name: ${COMPOSE_PROJECT_NAME}-mailhog
+    image: mailhog/mailhog:latest
+    environment:
+      - DOMAIN_NAME=mail.${COMPOSE_PROJECT_NAME}.dev
+    ports:
+      - 8025:8025
+
+  phpmyadmin:
+    container_name: ${COMPOSE_PROJECT_NAME}_phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: mysql
+      DOMAIN_NAME: pma.${COMPOSE_PROJECT_NAME}.dev
+    volumes:
+      - ./config/phpmyadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php
+    links:
+      - mysql
