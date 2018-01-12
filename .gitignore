@@ -1,5 +1,6 @@
 # Symfony
 /your_project/app/config/parameters.yml
+/your_project/web/app.php
 
 */var/cache/*
 */var/logs/*
@@ -22,6 +23,7 @@ docker/.env
 !bin/console
 !bin/symfony_requirements
 */vendor/
+composer.phar
 
 # Assets and user uploads
 /web/bundles/
